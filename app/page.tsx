@@ -1,69 +1,812 @@
+"use client";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import LightboxModal, { ProjectItem } from "@/components/LightboxModal";
+import LuxuryPreloader from "@/components/LuxuryPreloader";
+
+// 21 pages for Mental Health Book
+const MENTAL_HEALTH_PAGES = Array.from(
+  { length: 21 },
+  (_, i) => `/book-designs/pdf_pages/BOOK_DESIGN_PALAK_page_${i + 1}.png`
+);
+
+const PROJECTS: ProjectItem[] = [
+  // ─── BOOKS & EDITORIAL PUBLICATIONS ───
+  {
+    id: "mental-health-book",
+    num: "01",
+    title: "Mental Health Awareness — 21-Page Book",
+    category: "Book & Editorial",
+    year: "2025",
+    img: "/book-designs/pdf_pages/BOOK_DESIGN_PALAK_page_1.png",
+    description: "Complete 21-page institutional research and mental health awareness book layout. Includes conceptual cover art, chapter typography, structured content grids, and medical illustration graphics.",
+    tags: ["21-Page Book", "Editorial Layout", "Typography", "Infographics"],
+    pages: MENTAL_HEALTH_PAGES,
+  },
+  {
+    id: "she-healed-herself",
+    num: "02",
+    title: "She Healed Herself — Book Design",
+    category: "Book & Editorial",
+    year: "2025",
+    img: "/book-designs/WhatsApp%20Image%202026-09-21%20at%203.05.19%20PM.jpeg",
+    description: "Emotive book cover and interior typography spread. Portrays an anatomical heart wrapped in healing bandages with sensitive, poignant verse typesetting.",
+    tags: ["Book Cover", "Typography", "Poetry Layout"],
+    pages: ["/book-designs/WhatsApp%20Image%202026-09-21%20at%203.05.19%20PM.jpeg"],
+  },
+  {
+    id: "sony-product-catalog",
+    num: "03",
+    title: "Product Catalog — The Art of Capturing Life",
+    category: "Book & Editorial",
+    year: "2025",
+    img: "/book-designs/pdf_pages/CATALOG_PALAK_page_1.png",
+    description: "Corporate multi-grid photography catalog for mirrorless cameras and lenses. High-fashion angular geometry and bold editorial typesetting.",
+    tags: ["Catalog Design", "Commercial Print", "Camera Gear"],
+  },
+  {
+    id: "spicy-food-menu",
+    num: "04",
+    title: "Spicy Food — Restaurant Menu Card",
+    category: "Book & Editorial",
+    year: "2025",
+    img: "/book-designs/pdf_pages/MENU_CARD_PALAK_page_1.png",
+    description: "Modern restaurant menu card layout featuring culinary photography, dark slate textures, price lists, and vibrant typography.",
+    tags: ["Menu Card", "Hospitality", "Print Design"],
+  },
+  {
+    id: "crime-newspaper",
+    num: "05",
+    title: "Crime Newspaper — Retro Tabloid Layout",
+    category: "Book & Editorial",
+    year: "2025",
+    img: "/book-designs/pdf_pages/CRIME_NEWSPAPER_PALAK_page_1.png",
+    description: "Authentic retro tabloid crime newspaper spread design featuring sensational news headlines, column typography, distressed halftone paper grain, and vintage advertisements.",
+    tags: ["Newspaper", "Editorial", "Print Layout"],
+  },
+
+  // ─── BRAND IDENTITY & PACKAGING ───
+  {
+    id: "palak-co-skincare",
+    num: "06",
+    title: "The Palak Co. — Luxury Skincare",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/book-designs/WhatsApp%20Image%202026-09-28%20at%2011.32.00%20PM.jpeg",
+    description: "Complete luxury cosmetic and skincare branding system — product bottles, glass dropper serum, moisturizer jar, lip tint packaging, bespoke craft shopping bag, and unboxing note card.",
+    tags: ["Packaging", "Branding", "Luxury Cosmetics", "Mockups"],
+  },
+  {
+    id: "bare-wear-apparel",
+    num: "07",
+    title: "Bare Wear — Streetwear Identity",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/book-designs/WhatsApp%20Image%202026-09-29%20at%2012.58.26%20AM.jpeg",
+    description: "Comprehensive apparel brand identity showcase: storefront facade signage, oversized hoodie merchandise, embroidered cap, garment tags, tissue wrap, matte black packaging box, and mobile shopping app preview.",
+    tags: ["Streetwear", "Apparel", "Visual Identity", "Merchandise"],
+  },
+  {
+    id: "bare-wear-logo",
+    num: "08",
+    title: "Bare Wear Logo — Negative Space Mark",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/logo-designs/CLOTHE%20BRAND%20LOGO.jpg.jpeg",
+    description: "Minimalist fashion house emblem utilizing clever negative-space silhouette within bold contemporary letterforms.",
+    tags: ["Logo Design", "Negative Space", "Fashion"],
+  },
+  {
+    id: "the-palak-co-logo",
+    num: "09",
+    title: "The Palak Co. — Brandmark",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/logo-designs/PALAK%20BEAUTY%20LOGO.jpg.jpeg",
+    description: "Graceful serif monogram blending profile silhouette and botanical leaf flourishes for beauty, wellness and skincare branding.",
+    tags: ["Monogram", "Beauty Logo", "Minimalist"],
+  },
+  {
+    id: "design-adda-studio",
+    num: "10",
+    title: "Design Adda Studio — Brand Identity",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/logo-designs/1.jpeg",
+    description: "Brand identity & logo design crafted for client Design Adda Studio, integrating an architectural shelter, pencil trajectory, and golden stars.",
+    tags: ["Client Project", "Logo Design", "Identity", "Gold Accent"],
+  },
+
+  // ─── 3D PRODUCT MODELING ───
+  {
+    id: "pepsi-3d-can",
+    num: "11",
+    title: "3D Pepsi Can — Dynamic Render",
+    category: "3D Modeling",
+    year: "2025",
+    img: "/3d-designs/3D%20BOTTLE.jpg.jpeg",
+    description: "Digital 3D modeling and product visualization of an icy Pepsi beverage can with angled dynamic perspective, realistic metallic highlights, and drop shadows.",
+    tags: ["3D Modeling", "Product Render", "Industrial Design"],
+  },
+  {
+    id: "fanta-3d-bottle",
+    num: "12",
+    title: "Fanta Orange — 3D Bottle Design",
+    category: "3D Modeling",
+    year: "2025",
+    img: "/3d-designs/FANTA%203D%20BOTTLE.jpg.jpeg",
+    description: "Detailed 3D container render for Fanta Orange featuring custom contoured bottle geometry, volumetric citrus color shading, and studio lighting.",
+    tags: ["3D Packaging", "Lighting", "Product Modeling"],
+  },
+  {
+    id: "shampoo-3d-bottle",
+    num: "13",
+    title: "3D Shampoo Container & Pump",
+    category: "3D Modeling",
+    year: "2025",
+    img: "/3d-designs/SHAMPOO%203D%20BOTTLE.jpg.jpeg",
+    description: "Studio product modeling of a cosmetic shampoo bottle with realistic dispenser pump mechanics, soft pastel backdrop, and contact shadows.",
+    tags: ["3D Cosmetics", "Product Visualization", "Rendering"],
+  },
+
+  // ─── POSTERS & CAMPAIGNS ───
+  {
+    id: "banaras-cultural-poster",
+    num: "14",
+    title: "Banaras — Spiritual & Ancient City",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/BANARAS%20POSTER.png",
+    description: "Cultural tribute poster featuring split-typography masking over golden Kashi river ghats, temple spires, holy boats, and evocative Hindi caption 'काशी — आस्था, संस्कृति और सुकून'.",
+    tags: ["Poster Design", "Typography Masking", "Culture", "Digital Art"],
+  },
+  {
+    id: "fashion-model-sale",
+    num: "15",
+    title: "Special Sale — 80% Off Campaign",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/MODEL%20POSTER.png",
+    description: "Modern commercial fashion campaign poster with high-contrast emerald canvas, multi-angle model photography cutouts, and editorial typography.",
+    tags: ["Fashion Poster", "Editorial Layout", "Commercial"],
+  },
+  {
+    id: "mono-new-arrival",
+    num: "16",
+    title: "MONO — New Arrival",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/POSTER.png",
+    description: "Minimalist urban apparel release poster employing a geometric three-column triptych format with technical grid background and high-fashion mood.",
+    tags: ["Minimal Poster", "Triptych", "Street Fashion"],
+  },
+  {
+    id: "money-heist-poster",
+    num: "17",
+    title: "Money Heist — Cinematic Film Poster",
+    category: "Posters & Art",
+    year: "2024",
+    img: "/posters/WhatsApp%20Image%202026-09-21%20at%203.05.45%20PM.jpeg",
+    description: "Dark, gritty photomontage poster design inspired by Netflix's Money Heist. Blends Polaroid-style cast portraits, Salvador Dali mask iconography, and weathered banknote newsprint texture.",
+    tags: ["Movie Poster", "Photomontage", "Dark Aesthetics"],
+  },
+
+  // ─── PHOTO ART & DIGITAL COMPOSITING ───
+  {
+    id: "moonlit-waterfall",
+    num: "18",
+    title: "Moonlit Waterfall — Fantasy Matte Painting",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/WhatsApp%20Image%202026-09-21%20at%203.05.45%20PM3.jpeg",
+    description: "Surreal nighttime fantasy photomanipulation combining a colossal moon, roaring waterfall gorge, twilight mist atmosphere, and lone traveler figure.",
+    tags: ["Matte Painting", "Photomanipulation", "Fantasy Art"],
+  },
+  {
+    id: "vintage-car-drive",
+    num: "19",
+    title: "Vintage Car Drive — Film Color Grading",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/WhatsApp%20Image%202026-09-21%20at%203.05.45%20PM%20(5).jpeg",
+    description: "1950s Kodachrome analog film simulation on classic automobile rally photography, infusing rich grain, aged borders, and warm sunlight patina.",
+    tags: ["Color Grading", "Film Emulation", "Vintage"],
+  },
+  {
+    id: "iron-man-typography",
+    num: "20",
+    title: "Tony Stark — Typography Portrait",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/WhatsApp%20Image%202026-09-21%20at%203.05.45%20PM%20(2).jpeg",
+    description: "Intricate text-shading art piece forming Robert Downey Jr.'s Iron Man visage using Marvel dialogue transcripts and character monologues in high-contrast shadow.",
+    tags: ["Typography Art", "Marvel", "Text Masking"],
+  },
+  {
+    id: "retro-stipple-portrait",
+    num: "21",
+    title: "Retro Ink Stipple Portrait",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/WhatsApp%20Image%202026-09-21%20at%203.05.45%20PM%20(3).jpeg",
+    description: "Vintage pointillism and hatched contour portrait study with rich tonal depth, classic cat-eye eyeliner, and 60s bow aesthetic.",
+    tags: ["Stippling", "Ink Art", "Digital Sketch"],
+  },
+  {
+    id: "landscape-cabin-grading",
+    num: "22",
+    title: "Alpine Cabin — Before/After Recolor",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/WhatsApp%20Image%202026-09-21%20at%203.05.29%20PM2.jpeg",
+    description: "Side-by-side color transformation demonstrating mood manipulation from alpine daylight to twilight lavender surrealism.",
+    tags: ["Photo Editing", "Before/After", "Environment"],
+  },
+];
+
+const CATEGORIES = [
+  "All",
+  "Book & Editorial",
+  "Brand Identity",
+  "3D Modeling",
+  "Posters & Art",
+];
+
+// Software Suite (Exactly the 4 requested: Photoshop, Illustrator, Corel draw, InDesign)
+const SOFTWARES = [
+  {
+    name: "Photoshop",
+    fullName: "Adobe Photoshop",
+    abbr: "Ps",
+    color: "#31A8FF",
+    border: "rgba(49, 168, 255, 0.4)",
+    bg: "rgba(49, 168, 255, 0.08)",
+    specialty: "Photo Manipulation & Matte Compositing",
+    desc: "Surreal matte paintings, high-end commercial retouching, complex mask cutouts, and cinematic color grading.",
+  },
+  {
+    name: "Illustrator",
+    fullName: "Adobe Illustrator",
+    abbr: "Ai",
+    color: "#FF9A00",
+    border: "rgba(255, 154, 0, 0.4)",
+    bg: "rgba(255, 154, 0, 0.08)",
+    specialty: "Vector Branding & Digital Inking",
+    desc: "Pixel-perfect brand logos, custom typography, negative-space marks, and vector illustration systems.",
+  },
+  {
+    name: "Corel draw",
+    fullName: "CorelDRAW Technical Suite",
+    abbr: "Cd",
+    color: "#00C853",
+    border: "rgba(0, 200, 83, 0.4)",
+    bg: "rgba(0, 200, 83, 0.08)",
+    specialty: "Print Production & Vector Architecture",
+    desc: "Large-format outdoor banners, commercial dieline packaging, signages, and pre-press manufacturing.",
+  },
+  {
+    name: "InDesign",
+    fullName: "Adobe InDesign",
+    abbr: "Id",
+    color: "#FF3366",
+    border: "rgba(255, 51, 102, 0.4)",
+    bg: "rgba(255, 51, 102, 0.08)",
+    specialty: "Editorial Layout & Book Publishing",
+    desc: "Multi-page publication volumes, editorial catalogs, restaurant menus, and master page grid architecture.",
+  },
+];
 
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
+
+  // High-performance RAF scroll parallax: 0 React re-renders, 120 FPS
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const y = window.scrollY;
+          if (portraitRef.current) {
+            portraitRef.current.style.transform = `translate3d(0, ${Math.min(y * 0.14, 140)}px, 0)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const filteredProjects = selectedCategory === "All"
+    ? PROJECTS
+    : PROJECTS.filter((p) => p.category === selectedCategory);
+
+  const currentProject = activeLightboxIndex !== null ? filteredProjects[activeLightboxIndex] : null;
+
+  const handleNextLightbox = () => {
+    if (activeLightboxIndex === null) return;
+    setActiveLightboxIndex((prev) => (prev! + 1) % filteredProjects.length);
+  };
+
+  const handlePrevLightbox = () => {
+    if (activeLightboxIndex === null) return;
+    setActiveLightboxIndex((prev) => (prev! - 1 + filteredProjects.length) % filteredProjects.length);
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="relative min-h-screen bg-[#080808] text-[#f5f5f5] selection:bg-[#c9a84c] selection:text-black overflow-x-hidden">
+      {/* ─── LUXURY EDITORIAL PRELOADER (3 FLASHING PALAK PICTURES) ─── */}
+      <LuxuryPreloader onComplete={() => window.scrollTo(0, 0)} />
+
+      {/* ─── STATIC LUXURY AMBIENT GLOW (NON-DISTURBING) ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[12%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-[#c9a84c]/[0.03] rounded-full blur-[200px]" />
+      </div>
+
+      {/* Lightbox Modal with Multi-Page Reader */}
+      <LightboxModal
+        isOpen={activeLightboxIndex !== null}
+        project={currentProject}
+        onClose={() => setActiveLightboxIndex(null)}
+        onNext={handleNextLightbox}
+        onPrev={handlePrevLightbox}
+        currentIndex={activeLightboxIndex ?? 0}
+        totalCount={filteredProjects.length}
+      />
+
+      {/* ─── NAVBAR (CENTERED CONTENT) ─── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 sm:px-12 py-5 flex items-center justify-between backdrop-blur-md bg-black/75 border-b border-white/[0.07]">
+        <a className="flex items-center gap-3 text-sm font-bold tracking-widest uppercase text-white hover:text-[#c9a84c] transition-colors" href="#">
+          <span className="w-8 h-8 rounded-full border border-[#c9a84c] flex items-center justify-center text-[#c9a84c] font-black text-xs shadow-lg shadow-[#c9a84c]/10">
+            PS
+          </span>
+          <span>Palak Singh <span className="text-[#c9a84c] text-xs font-normal">/ Graphic Designer</span></span>
+        </a>
+        <div className="flex items-center gap-8 text-xs font-mono tracking-widest uppercase">
+          <a href="#work" className="text-white/60 hover:text-white transition-colors">Work ({PROJECTS.length})</a>
+          <a href="#software" className="text-white/60 hover:text-white transition-colors">Software</a>
+          <a href="#about" className="text-white/60 hover:text-white transition-colors">About</a>
+          <a href="#contact" className="text-[#c9a84c] hover:underline">Contact</a>
+        </div>
+      </nav>
+
+      {/* ─── HERO SECTION (CONTINUOUS KINETIC TYPOGRAPHY & SMOOTH PARALLAX) ─── */}
+      <section className="relative min-h-screen pt-20 sm:pt-24 pb-10 px-4 sm:px-6 flex flex-col items-center justify-center text-center z-10 overflow-hidden">
+        {/* Availability Badge */}
+        <div className="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-xs font-mono tracking-widest uppercase text-white/70">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span>Available for Freelance & Creative Collaborations</span>
+        </div>
+
+        {/* ─── KINETIC CONTINUOUS MARQUEE & FLOATING PORTRAIT ─── */}
+        <div className="relative w-full overflow-hidden select-none py-2 flex flex-col items-center justify-center">
+          {/* Row 1: PALAK gliding smoothly leftward (Continuous 60-120fps CSS Marquee) */}
+          <div className="w-full overflow-hidden">
+            <div className="marquee-left">
+              <span className="font-black uppercase text-[15vw] sm:text-[11vw] leading-[0.82] tracking-tighter text-white/95 text-center drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] px-4">
+                PALAK · GRAPHIC DESIGNER · PALAK · VISUAL ARTIST · BRAND ARCHITECT ·&nbsp;
+              </span>
+              <span className="font-black uppercase text-[15vw] sm:text-[11vw] leading-[0.82] tracking-tighter text-white/95 text-center drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] px-4" aria-hidden="true">
+                PALAK · GRAPHIC DESIGNER · PALAK · VISUAL ARTIST · BRAND ARCHITECT ·&nbsp;
+              </span>
+            </div>
+          </div>
+
+          {/* Center Floating Portrait Overlapping Text with Smooth Parallax */}
+          <div
+            ref={portraitRef}
+            className="relative -mt-12 sm:-mt-20 md:-mt-28 w-[190px] sm:w-[230px] md:w-[260px] aspect-[3/4] z-20 mx-auto will-change-transform"
+          >
+            <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-[#c9a84c] shadow-[0_20px_60px_rgba(201,168,76,0.35)] bg-[#121212] group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/palak-pics/Palak%20professional%20picture.jpeg"
+                alt="Palak Singh - Graphic Designer"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+              />
+
+              {/* Bottom Badge */}
+              <div className="absolute bottom-2 left-2 right-2 p-2 rounded-lg bg-black/85 backdrop-blur-md border border-white/10 flex items-center justify-between text-left">
+                <div>
+                  <div className="text-[11px] font-bold text-white">Palak Singh</div>
+                  <div className="text-[9px] text-[#c9a84c] font-mono">Graphic Designer · India</div>
+                </div>
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-[#c9a84c]/20 text-[#c9a84c] border border-[#c9a84c]/40">
+                  ✦ 2026
+                </span>
+              </div>
+            </div>
+
+            {/* Floating Gold Star Badge */}
+            <div
+              className="absolute -top-2.5 -right-2.5 w-7 h-7 rounded-full border border-[#c9a84c] flex items-center justify-center text-[#c9a84c] text-xs font-mono bg-black/90 shadow-lg shadow-[#c9a84c]/30"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              ✦
+            </div>
+          </div>
+
+          {/* Row 2: SINGH gliding smoothly rightward (Continuous 60-120fps CSS Marquee) */}
+          <div className="w-full overflow-hidden -mt-10 sm:-mt-16">
+            <div className="marquee-right">
+              <span
+                className="font-black uppercase text-[15vw] sm:text-[11vw] leading-[0.82] tracking-tighter text-transparent text-center px-4"
+                style={{ WebkitTextStroke: "1.5px rgba(201,168,76,0.8)" }}
+              >
+                SINGH · BOOK DESIGN · BRAND IDENTITY · 3D PRODUCT · EDITORIAL ·&nbsp;
+              </span>
+              <span
+                className="font-black uppercase text-[15vw] sm:text-[11vw] leading-[0.82] tracking-tighter text-transparent text-center px-4"
+                style={{ WebkitTextStroke: "1.5px rgba(201,168,76,0.8)" }}
+                aria-hidden="true"
+              >
+                SINGH · BOOK DESIGN · BRAND IDENTITY · 3D PRODUCT · EDITORIAL ·&nbsp;
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Centered Tagline with Balanced Spacing */}
+        <div className="mt-5 sm:mt-6 text-center z-20 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-xl font-medium tracking-wide text-[#c9a84c] uppercase">
+            Graphic Designer · Book Design · Brand Identity · 3D Art
+          </p>
+
+          <p className="mt-1.5 text-xs sm:text-sm text-white/60 max-w-lg mx-auto font-light leading-relaxed">
+            Crafting visual identities, luxury packaging, publication books, 3D product renders, and high-impact commercial campaigns.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        {/* Centered Action Buttons */}
+        <div className="mt-5 flex items-center justify-center gap-4 z-20 flex-wrap">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#work"
+            className="px-7 py-3 rounded-full bg-[#c9a84c] text-black font-bold text-xs tracking-widest uppercase hover:bg-[#e0c06a] transition-all hover:scale-105 shadow-xl shadow-[#c9a84c]/20"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+            Explore Selected Works ({PROJECTS.length}) ↓
           </a>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
+            className="px-7 py-3 rounded-full border border-white/20 text-white font-medium text-xs tracking-widest uppercase hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all"
           >
-            Documentation
+            Get In Touch ↗
           </a>
         </div>
-      </main>
+
+        {/* Centered Scroll Indicator */}
+        <div className="mt-5 z-20 flex flex-col items-center">
+          <a href="#work" className="scroll-pill" aria-label="Scroll down">
+            <span className="scroll-pill-dot" />
+          </a>
+        </div>
+      </section>
+
+      {/* ─── SELECTED WORK SECTION (100% CENTER-ALIGNED) ─── */}
+      <section className="py-24 px-6 sm:px-12 max-w-7xl mx-auto z-10 relative" id="work">
+        {/* Centered Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2">
+            <span>✦</span> Selected Work <span>✦</span>
+          </span>
+          <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase mt-2">
+            Featured Portfolio
+          </h2>
+          <p className="text-xs sm:text-sm text-white/50 mt-3 max-w-xl mx-auto">
+            Click any project to view the full uncropped artwork in high-resolution, or flip through multi-page publication books.
+          </p>
+          <div className="mt-3 text-xs font-mono text-[#c9a84c]">
+            Showing {filteredProjects.length} of {PROJECTS.length} Works
+          </div>
+        </div>
+
+        {/* Centered Filter Pills */}
+        <div className="flex items-center justify-center gap-2.5 flex-wrap pb-10">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* 3-Column Centered Cards Grid (Mockup V2 Aesthetic) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredProjects.map((project, index) => (
+            <div
+              key={project.id}
+              className="portfolio-card clickable-card group flex flex-col justify-between"
+              onClick={() => setActiveLightboxIndex(index)}
+            >
+              {/* Image Container with Proper Aspect Ratio */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#161616] flex items-center justify-center p-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="card-img max-h-full max-w-full object-contain rounded"
+                  loading="lazy"
+                />
+
+                {/* Floating View Badge */}
+                <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#c9a84c]/50 text-[10px] font-mono text-[#c9a84c] opacity-0 group-hover:opacity-100 transition-opacity">
+                  {project.pages && project.pages.length > 1
+                    ? `Read ${project.pages.length} Pages 📖`
+                    : "View Full ↗"}
+                </div>
+
+                {/* Number Watermark */}
+                <div className="absolute bottom-2 left-3 text-[10px] font-mono text-white/40">
+                  #{project.num}
+                </div>
+              </div>
+
+              {/* Card Meta & Details */}
+              <div className="p-5 flex flex-col justify-between flex-1 border-t border-white/5 bg-[#101010]">
+                <div>
+                  <div className="flex items-center justify-between text-[11px] font-mono text-[#c9a84c] mb-1.5 uppercase">
+                    <span>{project.category}</span>
+                    <span className="text-white/40">{project.year}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-[#c9a84c] transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-white/55 mt-2 line-clamp-2 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Tags */}
+                {project.tags && (
+                  <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-white/5">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-white/60 border border-white/5"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── SOFTWARE MASTERY SECTION (100% CENTERED, EXACT 4 TOOLS) ─── */}
+      <section className="py-24 px-6 sm:px-12 max-w-7xl mx-auto border-t border-white/10 z-10 relative" id="software">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2">
+            <span>✦</span> Core Arsenal <span>✦</span>
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-2">
+            Software Mastery
+          </h2>
+          <p className="text-xs sm:text-sm text-white/50 mt-3 max-w-xl mx-auto">
+            The core creative powerhouses utilized to execute vector branding, photorealistic compositing, large-format manufacturing, and editorial volumes.
+          </p>
+        </div>
+
+        {/* 4 Software Cards (Minimalist Luxury · Zero Proficiency Numbers) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {SOFTWARES.map((sw, index) => (
+            <div
+              key={sw.name}
+              className="relative rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-2 group text-left flex flex-col justify-between"
+              style={{
+                backgroundColor: "#111111",
+                borderColor: "rgba(255, 255, 255, 0.08)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = sw.border;
+                e.currentTarget.style.boxShadow = `0 16px 40px -10px ${sw.bg}`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.08)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <div>
+                {/* Top: Icon + Abbreviation badge */}
+                <div className="flex items-center justify-between mb-5">
+                  <div
+                    className="w-14 h-14 rounded-xl flex items-center justify-center font-black text-2xl shadow-lg border"
+                    style={{
+                      backgroundColor: sw.bg,
+                      borderColor: sw.border,
+                      color: sw.color,
+                    }}
+                  >
+                    {sw.abbr}
+                  </div>
+                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-full border border-white/10 text-white/50 bg-white/[0.03]">
+                    Tool · 0{index + 1}
+                  </span>
+                </div>
+
+                {/* Title & Role */}
+                <h3 className="text-xl font-bold text-white tracking-tight">
+                  {sw.name}
+                </h3>
+                <p
+                  className="text-xs font-mono mt-1 font-semibold"
+                  style={{ color: sw.color }}
+                >
+                  {sw.specialty}
+                </p>
+
+                {/* Description */}
+                <p className="text-xs text-white/55 mt-3 leading-relaxed">
+                  {sw.desc}
+                </p>
+              </div>
+
+              {/* Bottom Subtle Pill */}
+              <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-white/40">
+                <span>{sw.fullName}</span>
+                <span className="text-[#c9a84c]">✦ Mastered</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── ABOUT & SECOND PROFESSIONAL PHOTO (100% CENTER-ALIGNED) ─── */}
+      <section className="py-24 px-6 sm:px-12 max-w-7xl mx-auto border-t border-white/10 z-10 relative" id="about">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2">
+            <span>✦</span> Behind The Work <span>✦</span>
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-2">
+            About The Designer
+          </h2>
+        </div>
+
+        {/* 100% Centered Showcase */}
+        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+          {/* Centered Portrait Frame */}
+          <div className="relative w-48 sm:w-56 md:w-64 aspect-[3/4] rounded-2xl border-2 border-[#c9a84c] p-1.5 shadow-[0_20px_50px_rgba(201,168,76,0.25)] bg-[#121212] group mb-8 overflow-hidden">
+            <div className="relative w-full h-full rounded-xl overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/palak-pics/Palak%20professional%20picture2.jpeg"
+                alt="Palak Singh - Portrait"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-2 right-2 text-center">
+                <div className="text-xs font-bold text-white uppercase tracking-wider">Palak Singh</div>
+                <div className="text-[10px] text-[#c9a84c] font-mono">Graphic Designer · India</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Centered Headline */}
+          <h3 className="text-2xl sm:text-4xl font-black tracking-tight text-white uppercase max-w-2xl">
+            Transforming Ideas Into Iconic Visuals
+          </h3>
+
+          {/* Centered Bio */}
+          <div className="mt-6 text-sm sm:text-base text-white/70 space-y-4 font-light leading-relaxed max-w-2xl text-center">
+            <p>
+              Hello! I&apos;m <span className="text-white font-medium">Palak Singh</span>, an India-based graphic designer and visual artist specializing in brand identities, multi-page publication books, 3D product visualization, and high-impact advertising posters.
+            </p>
+            <p>
+              With advanced expertise across <span className="text-[#31A8FF] font-medium">Photoshop</span>, <span className="text-[#FF9A00] font-medium">Illustrator</span>, <span className="text-[#00C853] font-medium">Corel draw</span>, and <span className="text-[#FF3366] font-medium">InDesign</span>, I turn client requirements into cohesive, high-converting visual assets across physical packaging, commercial print, and digital media.
+            </p>
+          </div>
+
+          {/* Centered Metrics */}
+          <div className="grid grid-cols-3 gap-6 sm:gap-10 mt-10 pt-8 border-t border-white/10 text-center w-full max-w-lg">
+            <div>
+              <div className="text-2xl sm:text-4xl font-black text-[#c9a84c]">22+</div>
+              <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Portfolio Works</div>
+            </div>
+            <div>
+              <div className="text-2xl sm:text-4xl font-black text-[#c9a84c]">4</div>
+              <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Design Softwares</div>
+            </div>
+            <div>
+              <div className="text-2xl sm:text-4xl font-black text-[#c9a84c]">100%</div>
+              <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Custom Craft</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CONTACT SECTION (100% CENTER-ALIGNED) ─── */}
+      <section className="py-24 px-6 sm:px-12 max-w-5xl mx-auto text-center border-t border-white/10 z-10 relative" id="contact">
+        <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2">
+          <span>✦</span> Start A Conversation <span>✦</span>
+        </span>
+        <h2 className="text-4xl sm:text-7xl font-black tracking-tight text-white uppercase mt-4">
+          Let&apos;s Build Something<br />
+          <span className="text-transparent" style={{ WebkitTextStroke: "1.5px rgba(201,168,76,0.9)" }}>
+            Extraordinary
+          </span>
+        </h2>
+        <p className="mt-6 text-sm sm:text-base text-white/60 max-w-xl mx-auto leading-relaxed">
+          Have an upcoming project, brand identity revamp, packaging concept, publication book, or freelance requirement? Reach out directly and let&apos;s bring your vision to life.
+        </p>
+
+        {/* Direct One-Click Communication Channels (No raw IDs shown on UI) */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-5 max-w-xl mx-auto">
+          {/* Email Button */}
+          <a
+            href="mailto:palaksingh.creator@gmail.com"
+            className="px-9 py-4 rounded-full bg-[#c9a84c] text-black font-bold text-xs sm:text-sm tracking-widest uppercase hover:bg-[#e0c06a] transition-all hover:scale-105 shadow-xl shadow-[#c9a84c]/20 flex items-center gap-2.5 cursor-pointer"
+            aria-label="Send Email"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>Send Email ↗</span>
+          </a>
+
+          {/* Instagram Button */}
+          <a
+            href="https://www.instagram.com/_.palakokbye/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-9 py-4 rounded-full border border-white/20 text-white bg-white/[0.04] font-bold text-xs sm:text-sm tracking-widest uppercase hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 hover:scale-105 transition-all flex items-center gap-2.5 shadow-xl shadow-black/40 cursor-pointer"
+            aria-label="Connect on Instagram"
+          >
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span>Instagram ↗</span>
+          </a>
+        </div>
+
+        {/* Studio Commission Card (100% Centered) */}
+        <div className="mt-16 p-8 rounded-2xl border border-white/10 bg-[#0f0f0f] max-w-xl mx-auto text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-between pb-4 border-b border-white/10 gap-3 text-center sm:text-left">
+            <div>
+              <div className="text-sm font-bold text-white">Palak Singh — Design Services</div>
+              <div className="text-xs text-[#c9a84c] font-mono">Graphic Design, 3D Renders & Publication</div>
+            </div>
+            <span className="text-xs text-emerald-400 font-mono flex items-center justify-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Open for Commissions
+            </span>
+          </div>
+
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-white/60 text-center sm:text-left">
+            <div>
+              <div className="text-white/40 uppercase font-mono text-[10px]">Services</div>
+              <div className="text-white mt-1">Branding, 3D Renders, Book Design, Posters</div>
+            </div>
+            <div>
+              <div className="text-white/40 uppercase font-mono text-[10px]">Location</div>
+              <div className="text-white mt-1">India · Available Worldwide</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FOOTER (100% CENTER-ALIGNED) ─── */}
+      <footer className="py-12 px-6 sm:px-12 border-t border-white/10 flex flex-col items-center justify-center gap-5 text-center text-xs font-mono text-white/40 z-10 relative">
+        <div className="flex items-center justify-center gap-6 flex-wrap">
+          <a href="#work" className="hover:text-[#c9a84c] transition-colors">Portfolio</a>
+          <a href="#software" className="hover:text-[#c9a84c] transition-colors">Software</a>
+          <a href="#about" className="hover:text-[#c9a84c] transition-colors">About</a>
+          <a href="#contact" className="hover:text-[#c9a84c] transition-colors">Contact</a>
+          <span className="text-white/20">|</span>
+          <a href="mailto:palaksingh.creator@gmail.com" className="text-white/70 hover:text-[#c9a84c] transition-colors">Email ↗</a>
+          <a href="https://www.instagram.com/_.palakokbye/" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] hover:underline transition-colors">Instagram ↗</a>
+          <span className="text-white/20">|</span>
+          <a href="#" className="hover:text-[#c9a84c] transition-colors">Top ↑</a>
+        </div>
+        <div>
+          © {new Date().getFullYear()} Palak Singh — Graphic Designer. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }
