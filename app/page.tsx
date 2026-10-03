@@ -320,6 +320,127 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ── MASTER SCROLL-REVEAL: Intersection Observer (zero React state) ──
+  useEffect(() => {
+    // 1. Generic reveal elements (.reveal, .reveal-left, .reveal-right)
+    const revealEls = document.querySelectorAll<HTMLElement>('.reveal, .reveal-left, .reveal-right');
+    const revealIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            revealIO.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach((el) => revealIO.observe(el));
+
+    // 2. Staggered portfolio card reveal
+    const cardEls = document.querySelectorAll<HTMLElement>('.reveal-card');
+    const cardIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const el = e.target as HTMLElement;
+            const idx = Number(el.dataset.cardIdx ?? 0);
+            setTimeout(() => el.classList.add('visible'), idx * 80);
+            cardIO.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+    cardEls.forEach((el, i) => {
+      el.dataset.cardIdx = String(i % 6); // reset stagger per row of 3
+      cardIO.observe(el);
+    });
+
+    // 3. Software card stagger reveal
+    const swEls = document.querySelectorAll<HTMLElement>('.sw-card-reveal');
+    const swIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const el = e.target as HTMLElement;
+            const idx = Number(el.dataset.swIdx ?? 0);
+            setTimeout(() => el.classList.add('visible'), idx * 110);
+            swIO.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    swEls.forEach((el, i) => {
+      el.dataset.swIdx = String(i);
+      swIO.observe(el);
+    });
+
+    // 4. Animated stat counters + ring glow
+    const countUp = (el: HTMLElement, target: string) => {
+      const isPercent = target.includes('%');
+      const isPlus = target.includes('+');
+      const num = parseInt(target.replace(/[^0-9]/g, ''), 10);
+      const duration = 1400;
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        const elapsed = Math.min(now - startTime, duration);
+        const progress = elapsed / duration;
+        // easeOutExpo
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const current = Math.round(eased * num);
+        el.textContent = `${current}${isPercent ? '%' : ''}${isPlus ? '+' : ''}`;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const statEls = document.querySelectorAll<HTMLElement>('.stat-counter');
+    const statIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const el = e.target as HTMLElement;
+            const target = el.dataset.target ?? el.textContent ?? '';
+            el.dataset.target = target;
+            countUp(el, target);
+            el.closest('.stat-ring')?.classList.add('lit');
+            statIO.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    statEls.forEach((el) => statIO.observe(el));
+
+    // 5. Contact heading word-by-word reveal
+    const wordEls = document.querySelectorAll<HTMLElement>('.contact-heading-word');
+    const wordIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            wordEls.forEach((w, i) => {
+              setTimeout(() => w.classList.add('visible'), i * 120);
+            });
+            wordIO.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (wordEls[0]) wordIO.observe(wordEls[0]);
+
+    return () => {
+      revealIO.disconnect();
+      cardIO.disconnect();
+      swIO.disconnect();
+      statIO.disconnect();
+      wordIO.disconnect();
+    };
+  }, []);
+
+
   const filteredProjects = selectedCategory === "All"
     ? PROJECTS
     : PROJECTS.filter((p) => p.category === selectedCategory);
@@ -338,8 +459,12 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#080808] text-[#f5f5f5] selection:bg-[#c9a84c] selection:text-black overflow-x-hidden">
-      {/* ─── LUXURY EDITORIAL PRELOADER (3 FLASHING PALAK PICTURES) ─── */}
+      {/* Film Grain Texture Overlay */}
+      <div className="grain-overlay" aria-hidden="true" />
+
+      {/* LUXURY EDITORIAL PRELOADER */}
       <LuxuryPreloader onComplete={() => window.scrollTo(0, 0)} />
+
 
       {/* ─── STATIC LUXURY AMBIENT GLOW (NON-DISTURBING) ─── */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -377,7 +502,7 @@ export default function Home() {
       <section className="relative min-h-screen pt-20 sm:pt-24 pb-10 px-4 sm:px-6 flex flex-col items-center justify-center text-center z-10 overflow-hidden">
         {/* Availability Badge */}
         <div className="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-xs font-mono tracking-widest uppercase text-white/70">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-emerald-400 heartbeat-dot" />
           <span>Available for Freelance & Creative Collaborations</span>
         </div>
 
@@ -487,14 +612,15 @@ export default function Home() {
       {/* ─── SELECTED WORK SECTION (100% CENTER-ALIGNED) ─── */}
       <section className="py-24 px-6 sm:px-12 max-w-7xl mx-auto z-10 relative" id="work">
         {/* Centered Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-12 reveal">
           <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2">
             <span>✦</span> Selected Work <span>✦</span>
           </span>
           <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase mt-2">
             Featured Portfolio
           </h2>
-          <p className="text-xs sm:text-sm text-white/50 mt-3 max-w-xl mx-auto">
+          <div className="gold-divider mt-4" />
+          <p className="text-xs sm:text-sm text-white/50 mt-4 max-w-xl mx-auto">
             Click any project to view the full uncropped artwork in high-resolution, or flip through multi-page publication books.
           </p>
           <div className="mt-3 text-xs font-mono text-[#c9a84c]">
@@ -503,7 +629,7 @@ export default function Home() {
         </div>
 
         {/* Centered Filter Pills */}
-        <div className="flex items-center justify-center gap-2.5 flex-wrap pb-10">
+        <div className="flex items-center justify-center gap-2.5 flex-wrap pb-10 reveal">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
@@ -520,9 +646,10 @@ export default function Home() {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="portfolio-card clickable-card group flex flex-col justify-between"
+              className="portfolio-card reveal-card clickable-card group flex flex-col justify-between"
               onClick={() => setActiveLightboxIndex(index)}
             >
+
               {/* Image Container with Proper Aspect Ratio */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#161616] flex items-center justify-center p-3">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -582,14 +709,15 @@ export default function Home() {
 
       {/* ─── SOFTWARE MASTERY SECTION (100% CENTERED, EXACT 4 TOOLS) ─── */}
       <section className="py-24 px-6 sm:px-12 max-w-7xl mx-auto border-t border-white/10 z-10 relative" id="software">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 reveal">
           <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2">
             <span>✦</span> Core Arsenal <span>✦</span>
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-2">
             Software Mastery
           </h2>
-          <p className="text-xs sm:text-sm text-white/50 mt-3 max-w-xl mx-auto">
+          <div className="gold-divider mt-4" />
+          <p className="text-xs sm:text-sm text-white/50 mt-4 max-w-xl mx-auto">
             The core creative powerhouses utilized to execute vector branding, photorealistic compositing, large-format manufacturing, and editorial volumes.
           </p>
         </div>
@@ -599,7 +727,7 @@ export default function Home() {
           {SOFTWARES.map((sw, index) => (
             <div
               key={sw.name}
-              className="relative rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-2 group text-left flex flex-col justify-between"
+              className="sw-card-reveal relative rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-2 group text-left flex flex-col justify-between"
               style={{
                 backgroundColor: "#111111",
                 borderColor: "rgba(255, 255, 255, 0.08)",
@@ -613,6 +741,7 @@ export default function Home() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
+
               <div>
                 {/* Top: Icon + Abbreviation badge */}
                 <div className="flex items-center justify-between mb-5">
@@ -660,19 +789,20 @@ export default function Home() {
 
       {/* ─── ABOUT & SECOND PROFESSIONAL PHOTO (100% CENTER-ALIGNED) ─── */}
       <section className="py-24 px-6 sm:px-12 max-w-7xl mx-auto border-t border-white/10 z-10 relative" id="about">
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-14 reveal">
           <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2">
             <span>✦</span> Behind The Work <span>✦</span>
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-2">
             About The Designer
           </h2>
+          <div className="gold-divider mt-4" />
         </div>
 
         {/* 100% Centered Showcase */}
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
           {/* Centered Portrait Frame */}
-          <div className="relative w-48 sm:w-56 md:w-64 aspect-[3/4] rounded-2xl border-2 border-[#c9a84c] p-1.5 shadow-[0_20px_50px_rgba(201,168,76,0.25)] bg-[#121212] group mb-8 overflow-hidden">
+          <div className="reveal-left relative w-48 sm:w-56 md:w-64 aspect-[3/4] rounded-2xl border-2 border-[#c9a84c] p-1.5 shadow-[0_20px_50px_rgba(201,168,76,0.25)] bg-[#121212] group mb-8 overflow-hidden">
             <div className="relative w-full h-full rounded-xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -689,12 +819,12 @@ export default function Home() {
           </div>
 
           {/* Centered Headline */}
-          <h3 className="text-2xl sm:text-4xl font-black tracking-tight text-white uppercase max-w-2xl">
+          <h3 className="reveal text-2xl sm:text-4xl font-black tracking-tight text-white uppercase max-w-2xl">
             Transforming Ideas Into Iconic Visuals
           </h3>
 
           {/* Centered Bio */}
-          <div className="mt-6 text-sm sm:text-base text-white/70 space-y-4 font-light leading-relaxed max-w-2xl text-center">
+          <div className="reveal-right mt-6 text-sm sm:text-base text-white/70 space-y-4 font-light leading-relaxed max-w-2xl text-center">
             <p>
               Hello! I&apos;m <span className="text-white font-medium">Palak Singh</span>, an India-based graphic designer and visual artist specializing in brand identities, multi-page publication books, 3D product visualization, and high-impact advertising posters.
             </p>
@@ -703,41 +833,54 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Centered Metrics */}
+          {/* Centered Metrics — Animated Count-Up */}
           <div className="grid grid-cols-3 gap-6 sm:gap-10 mt-10 pt-8 border-t border-white/10 text-center w-full max-w-lg">
             <div>
-              <div className="text-2xl sm:text-4xl font-black text-[#c9a84c]">22+</div>
+              <div className="stat-ring inline-block">
+                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">22+</div>
+              </div>
               <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Portfolio Works</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-4xl font-black text-[#c9a84c]">4</div>
+              <div className="stat-ring inline-block">
+                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">4</div>
+              </div>
               <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Design Softwares</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-4xl font-black text-[#c9a84c]">100%</div>
+              <div className="stat-ring inline-block">
+                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">100%</div>
+              </div>
               <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Custom Craft</div>
             </div>
           </div>
         </div>
       </section>
 
+
       {/* ─── CONTACT SECTION (100% CENTER-ALIGNED) ─── */}
       <section className="py-24 px-6 sm:px-12 max-w-5xl mx-auto text-center border-t border-white/10 z-10 relative" id="contact">
-        <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2">
+        <span className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase flex items-center justify-center gap-2 reveal">
           <span>✦</span> Start A Conversation <span>✦</span>
         </span>
-        <h2 className="text-4xl sm:text-7xl font-black tracking-tight text-white uppercase mt-4">
-          Let&apos;s Build Something<br />
-          <span className="text-transparent" style={{ WebkitTextStroke: "1.5px rgba(201,168,76,0.9)" }}>
+        <h2 className="text-4xl sm:text-7xl font-black tracking-tight text-white uppercase mt-4 leading-none">
+          <span className="contact-heading-word">Let&apos;s</span>{" "}
+          <span className="contact-heading-word">Build</span>{" "}
+          <span className="contact-heading-word">Something</span>
+          <br />
+          <span
+            className="contact-heading-word text-transparent"
+            style={{ WebkitTextStroke: "1.5px rgba(201,168,76,0.9)" }}
+          >
             Extraordinary
           </span>
         </h2>
-        <p className="mt-6 text-sm sm:text-base text-white/60 max-w-xl mx-auto leading-relaxed">
+        <p className="reveal mt-6 text-sm sm:text-base text-white/60 max-w-xl mx-auto leading-relaxed">
           Have an upcoming project, brand identity revamp, packaging concept, publication book, or freelance requirement? Reach out directly and let&apos;s bring your vision to life.
         </p>
 
         {/* Direct One-Click Communication Channels (No raw IDs shown on UI) */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-5 max-w-xl mx-auto">
+        <div className="reveal mt-10 flex flex-wrap items-center justify-center gap-5 max-w-xl mx-auto">
           {/* Email Button */}
           <a
             href="mailto:palaksingh.creator@gmail.com"
@@ -766,14 +909,14 @@ export default function Home() {
         </div>
 
         {/* Studio Commission Card (100% Centered) */}
-        <div className="mt-16 p-8 rounded-2xl border border-white/10 bg-[#0f0f0f] max-w-xl mx-auto text-center">
+        <div className="reveal mt-16 p-8 rounded-2xl border border-white/10 bg-[#0f0f0f] max-w-xl mx-auto text-center">
           <div className="flex flex-col sm:flex-row items-center justify-between pb-4 border-b border-white/10 gap-3 text-center sm:text-left">
             <div>
               <div className="text-sm font-bold text-white">Palak Singh — Design Services</div>
-              <div className="text-xs text-[#c9a84c] font-mono">Graphic Design, 3D Renders & Publication</div>
+              <div className="text-xs text-[#c9a84c] font-mono">Graphic Design, 3D Renders &amp; Publication</div>
             </div>
             <span className="text-xs text-emerald-400 font-mono flex items-center justify-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Open for Commissions
+              <span className="w-2 h-2 rounded-full bg-emerald-400 heartbeat-dot" /> Open for Commissions
             </span>
           </div>
 
@@ -790,8 +933,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── FOOTER TICKER (Continuous Gold Marquee) ─── */}
+      <div className="footer-ticker-wrap">
+        <div className="footer-ticker">
+          <span>Palak Singh ✦ Graphic Designer ✦ Book Design ✦ Brand Identity ✦ 3D Art ✦ Posters ✦ India ✦ Available Worldwide ✦ Open for Commissions ✦ </span>
+          <span aria-hidden="true">Palak Singh ✦ Graphic Designer ✦ Book Design ✦ Brand Identity ✦ 3D Art ✦ Posters ✦ India ✦ Available Worldwide ✦ Open for Commissions ✦ </span>
+        </div>
+      </div>
+
       {/* ─── FOOTER (100% CENTER-ALIGNED) ─── */}
-      <footer className="py-12 px-6 sm:px-12 border-t border-white/10 flex flex-col items-center justify-center gap-5 text-center text-xs font-mono text-white/40 z-10 relative">
+      <footer className="py-12 px-6 sm:px-12 flex flex-col items-center justify-center gap-5 text-center text-xs font-mono text-white/40 z-10 relative">
         <div className="flex items-center justify-center gap-6 flex-wrap">
           <a href="#work" className="hover:text-[#c9a84c] transition-colors">Portfolio</a>
           <a href="#software" className="hover:text-[#c9a84c] transition-colors">Software</a>
