@@ -242,6 +242,88 @@ const PROJECTS: ProjectItem[] = [
     description: "Side-by-side color transformation demonstrating mood manipulation from alpine daylight to twilight lavender surrealism.",
     tags: ["Photo Editing", "Before/After", "Environment"],
   },
+
+  // ─── NEW EDITORIAL, BRAND & CAMPAIGN WORKS ───
+  {
+    id: "kit-chen-brochure",
+    num: "23",
+    title: "KIT CHEN. — Luxury Interior 4-Panel Brochure",
+    category: "Book & Editorial",
+    year: "2025",
+    img: "/book-designs/kitchen-brochure.jpeg",
+    description: "Architectural 4-panel accordion & Z-fold commercial brochure design and 3D studio mockup for KIT CHEN. Features warm ambient illumination, interior photography, and modular kitchen specifications.",
+    tags: ["Brochure Design", "Z-Fold", "Interior Architecture", "Print & Mockup"],
+  },
+  {
+    id: "womens-leather-bag",
+    num: "24",
+    title: "Women's Bag — Eco-Leather Product Promo",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/PURSE.png",
+    description: "High-fashion luxury accessory advertising card featuring bold serif typography, warm terracotta accent palette, and commercial product presentation.",
+    tags: ["Luxury Fashion", "Product Promo", "Typography", "Editorial Layout"],
+  },
+  {
+    id: "silent-exporter-branding",
+    num: "25",
+    title: "The Silent Exporter — Global Brand Identity & Packaging",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/logo-designs/silent-exporter-branding.jpeg",
+    description: "End-to-end commercial corporate identity system: 3D architectural facade signage, kraft packaging cartons, luxury business stationery, logistics shipping container branding, and matte luggage tags.",
+    tags: ["Brand Identity", "Packaging Design", "Corporate Stationery", "Signage"],
+  },
+  {
+    id: "silent-exporter-logo",
+    num: "26",
+    title: "The Silent Exporter — Brandmark & Monogram",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/logo-designs/silent-exporter-logo.jpeg",
+    description: "Logomark fusing dynamic flight arrow trajectory, international globe wireframe, and cargo shipping cube into modern 'SE' monogram for global export logistics.",
+    tags: ["Logo Design", "Monogram", "Vector Mark", "Brandmark"],
+  },
+  {
+    id: "porsche-911-thrill",
+    num: "27",
+    title: "Porsche 911 GT3 — Experience The Thrill",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/PORSCHE.png",
+    description: "Automotive dynamic triptych campaign poster featuring high-velocity Lava Orange Porsche 911 GT3, segmented motion angle panels, textured newsprint grain, and technical typography.",
+    tags: ["Automotive Poster", "Triptych", "Poster Design", "Print Art"],
+  },
+  {
+    id: "spiderman-tom-holland",
+    num: "28",
+    title: "Spider-Man / Tom Holland — The Hero",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/spider%20man.png",
+    description: "Cinematic triple-panel tribute poster exploring Tom Holland as the actor, the suit, and the hero, set against textured monochrome grain with bold typography.",
+    tags: ["Movie Poster", "Triptych", "Cinematic Art", "Character Tribute"],
+  },
+  {
+    id: "take-off-your-mask",
+    num: "29",
+    title: "Take Off Your Mask — Surreal Editorial",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/bold%20poster.png",
+    description: "Avant-garde high-fashion surrealist editorial poster with digital liquid eye-slice distortion, deep crimson color blocking, and raw stipple grain typography.",
+    tags: ["Editorial Poster", "Surrealism", "Fashion Art", "Typography"],
+  },
+  {
+    id: "kanye-sliced-portrait",
+    num: "30",
+    title: "Photo Manipulation — Sliced Portrait Study",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/photo%20manipulation.png",
+    description: "Surrealist portrait displacement artwork cutting Kanye West's visage with woodgrain core textures and emerald studio backdrop.",
+    tags: ["Photo Manipulation", "Surrealist Art", "Digital Compositing"],
+  },
 ];
 
 const CATEGORIES = [
@@ -837,7 +919,7 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-6 sm:gap-10 mt-10 pt-8 border-t border-white/10 text-center w-full max-w-lg">
             <div>
               <div className="stat-ring inline-block">
-                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">22+</div>
+                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">30+</div>
               </div>
               <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Portfolio Works</div>
             </div>
