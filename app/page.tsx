@@ -324,6 +324,85 @@ const PROJECTS: ProjectItem[] = [
     description: "Surrealist portrait displacement artwork cutting Kanye West's visage with woodgrain core textures and emerald studio backdrop.",
     tags: ["Photo Manipulation", "Surrealist Art", "Digital Compositing"],
   },
+
+  // ─── LATEST COMMERCIAL, FASHION & BILLBOARD RELEASES ───
+  {
+    id: "minimalist-vitamin-c",
+    num: "31",
+    title: "Minimalist Skincare — Vitamin C Storefront & Campaign",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/vitamin-c-showroom-mockup.jpeg",
+    pages: [
+      "/designs/vitamin-c-showroom-mockup.jpeg",
+      "/designs/vitamin-c-laptop-mockup.jpeg",
+      "/designs/vitamin-c-glow-poster.png",
+    ],
+    description: "Complete commercial packaging, retail storefront, and eCommerce launch for Minimalist 10% Vitamin C Serum. Features flagship retail lightboard display, responsive laptop web showcase, and studio product poster.",
+    tags: ["Storefront Mockup", "Packaging Design", "eCommerce UI", "Retail Display"],
+  },
+  {
+    id: "dot-and-key-sunscreen",
+    num: "32",
+    title: "Dot & Key Skincare — Sun Protect SPF 50+ Campaign",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/dot-and-key-sun-protect.png",
+    pages: [
+      "/designs/dot-and-key-sun-protect.png",
+      "/designs/dot-and-key-social-mockup.jpeg",
+    ],
+    description: "Commercial packaging art and verified social media campaign for Dot & Key Sicilian blood orange sunscreen. Integrates 3D spiral fruit peel geometry, dynamic liquid splash mechanics, and promotional social post.",
+    tags: ["Cosmetics Branding", "Packaging Ad", "Social Media Mockup", "Product Art"],
+  },
+  {
+    id: "the-comfort-studio",
+    num: "33",
+    title: "The Comfort Studio — Furniture Campaign & Web UI",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/comfort-studio-social-mockup.png",
+    pages: [
+      "/designs/comfort-studio-social-mockup.png",
+      "/posters/FURNITURE.png",
+    ],
+    description: "Comprehensive brand launch for The Comfort Studio modern living collection. Features warm terracotta color grading, chesterfield sofa centerpiece, multi-platform Instagram feed mockups, and desktop hero banner.",
+    tags: ["Brand Identity", "Web Banner UI", "Social Media Mockup", "Interior Design"],
+  },
+  {
+    id: "urbanista-spotify-billboard",
+    num: "34",
+    title: "Urbanista × Spotify — Audio Billboard Campaign",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/spotify-headphone-billboard.jpeg",
+    pages: [
+      "/posters/spotify-headphone-billboard.jpeg",
+      "/designs/headphone.png",
+    ],
+    description: "High-impact commercial billboard and advertising campaign for Urbanista wireless headphones co-branded with Spotify. Features crimson atmospheric lighting, live track waveform UI, and highway billboard mockup.",
+    tags: ["Billboard Mockup", "Commercial Ad", "Spotify UI", "Industrial Design"],
+  },
+  {
+    id: "crocs-step-into-ease",
+    num: "35",
+    title: "Crocs — Step Into Ease Campaign",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/CROCKS.png",
+    description: "Bold street-fashion and footwear commercial campaign poster pairing oversized 3D typographic masking, cream streetwear model photography, and minimalist azure backdrop.",
+    tags: ["Fashion Campaign", "Footwear Ad", "Typography", "Commercial Art"],
+  },
+  {
+    id: "nike-suede-poster",
+    num: "36",
+    title: "Nike Suede XL — Commercial Footwear Poster",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/NIKE.png",
+    description: "Striking cobalt blue footwear advertising poster for Nike Suede XL featuring heavy condensed typography, realistic contact drop shadows, and rustic white brick texture.",
+    tags: ["Sneaker Poster", "Typography", "Commercial Ad", "Footwear"],
+  },
 ];
 
 const CATEGORIES = [
@@ -919,7 +998,7 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-6 sm:gap-10 mt-10 pt-8 border-t border-white/10 text-center w-full max-w-lg">
             <div>
               <div className="stat-ring inline-block">
-                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">30+</div>
+                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">36+</div>
               </div>
               <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Portfolio Works</div>
             </div>
