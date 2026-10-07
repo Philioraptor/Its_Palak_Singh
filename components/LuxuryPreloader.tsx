@@ -10,25 +10,31 @@ const PRELOAD_IMAGES = [
     src: "/palak-pics/Palak%20professional%20picture.jpeg",
     title: "Palak Singh",
     subtitle: "Visual Identity & Editorial Direction",
-    badge: "01 / 04",
+    badge: "01 / 05",
   },
   {
     src: "/palak-pics/Palak%20professional%20picture3.jpeg",
     title: "Graphic Designer",
     subtitle: "Brand Systems & Commercial Packaging",
-    badge: "02 / 04",
+    badge: "02 / 05",
   },
   {
     src: "/palak-pics/Palak%20professional%20picture2.jpeg",
     title: "Brand Architect",
     subtitle: "Publication Design & Typography Systems",
-    badge: "03 / 04",
+    badge: "03 / 05",
   },
   {
-    src: "/palak-pics/file_000000003b608208bbc5e6af43146c3a.png",
+    src: "/palak-pics/file_0000000041dc820883502640578a4b30.png",
     title: "Creative Artist",
-    subtitle: "3D Visualization & Vector Illustration",
-    badge: "04 / 04",
+    subtitle: "Digital Inking & Character Styling",
+    badge: "04 / 05",
+  },
+  {
+    src: "/palak-pics/file_00000000ac7c8208baaafdae4a4b927b.png",
+    title: "Visual Storyteller",
+    subtitle: "Vector Art & Modern Aesthetics",
+    badge: "05 / 05",
   },
 ];
 
@@ -53,26 +59,24 @@ export default function LuxuryPreloader({ onComplete }: PreloaderProps) {
 
   useEffect(() => {
     const startTime = Date.now();
-    const duration = 2600; // 2.6s smooth cinematic entrance
+    const duration = 2800; // 2.8s smooth cinematic entrance
 
     const timer = setInterval(() => {
       const elapsed = Date.now() - startTime;
       const rawProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
       setProgress(rawProgress);
 
-      if (rawProgress < 34) {
-        setActiveImageIndex(0);
-      } else if (rawProgress < 68) {
-        setActiveImageIndex(1);
-      } else {
-        setActiveImageIndex(2);
-      }
+      const imgIdx = Math.min(
+        PRELOAD_IMAGES.length - 1,
+        Math.floor((rawProgress / 100) * PRELOAD_IMAGES.length)
+      );
+      setActiveImageIndex(imgIdx);
 
       if (rawProgress >= 100) {
         clearInterval(timer);
         setTimeout(finishLoader, 300);
       }
-    }, 40);
+    }, 35);
 
     return () => clearInterval(timer);
   }, []);

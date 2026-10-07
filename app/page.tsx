@@ -11,10 +11,136 @@ const MENTAL_HEALTH_PAGES = Array.from(
 );
 
 const PROJECTS: ProjectItem[] = [
-  // ─── LATEST COMMISSIONS, CAMPAIGNS & BRAND IDENTITIES (NEWEST FIRST) ───
+  // ─── LATEST COMMISSIONS, EDITORIAL & BRANDING (NEWEST FIRST) ───
+  {
+    id: "khoobsurat-magazine",
+    num: "01",
+    title: "Khoobsurat (खूबसूरत) — Aishwarya Rai Editorial Magazine",
+    category: "Book & Editorial",
+    year: "2025",
+    img: "/book-designs/khoobsurat-magazine.jpeg",
+    description: "Retro editorial Hindi-Urdu fashion cover featuring Aishwarya Rai, concentric vinyl groove texture, pop-art geometric starbursts, and bold Hindi typography.",
+    tags: ["Editorial Cover", "Magazine Design", "Hindi Typography", "Pop Art"],
+  },
+  {
+    id: "dhoni-magazine",
+    num: "02",
+    title: "DHONI 07 — Thala Helicopter Shot Magazine Cover",
+    category: "Book & Editorial",
+    year: "2025",
+    img: "/book-designs/dhoni-magazine.jpeg",
+    description: "Dynamic sports publication cover tribute celebrating MS Dhoni's iconic helicopter shot, 2023 IPL championship triumph, and leadership legacy with bold typographic hierarchy.",
+    tags: ["Magazine Cover", "Sports Editorial", "Typography", "Celebrity Tribute"],
+  },
+  {
+    id: "yum-yard-brand",
+    num: "03",
+    title: "Yum Yard — Restaurant Identity & Food Ordering UI",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/yum-yard-web-ui.jpeg",
+    pages: [
+      "/designs/yum-yard-web-ui.jpeg",
+      "/logo-designs/yum-yard-logo.jpeg",
+    ],
+    description: "Complete restaurant brand suite featuring whimsical chef mascot logo mark and modern eCommerce food ordering web application UI with category navigation and featured dish cards.",
+    tags: ["Web UI", "Mascot Logo", "Brand Identity", "Restaurant Design"],
+  },
+  {
+    id: "sweet-treats-cookies",
+    num: "04",
+    title: "Sweet Treats Cookies — Bakery Social Ad Campaign",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/book-designs/sweet-treats-cookies.jpeg",
+    description: "Mouth-watering chocolate chip cookie social media advertising post utilizing warm split-tone color blocking, playful typography, and appetizing depth-of-field food staging.",
+    tags: ["Social Media Ad", "Food Branding", "Typography", "Commercial Art"],
+  },
+  {
+    id: "strawberry-icecream",
+    num: "05",
+    title: "Rich Flavoured Strawberry — Artisan Ice Cream Poster",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/strawberry-icecream.jpeg",
+    description: "Vibrant high-contrast food & beverage commercial product poster showcasing a fresh strawberry waffle cone with dynamic floating berry elements and minimal layout.",
+    tags: ["Food & Beverage", "Product Poster", "Commercial Art", "Retouching"],
+  },
+  {
+    id: "kitkat-break-le",
+    num: "06",
+    title: "Nestlé KitKat — 'Break Le... But Make It Funny!' Campaign",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/logo-designs/kitkat-break-le.jpeg",
+    description: "Playful character-driven brand redesign and mascot illustration featuring high-fiving wafer fingers in retro sunglasses, witty Hinglish copywriting, and bold chalk lettering.",
+    tags: ["Character Design", "Mascot Illustration", "Brand Campaign", "Packaging Art"],
+  },
+  {
+    id: "skyline-designers",
+    num: "07",
+    title: "Skyline Designers — Corporate Architectural Identity",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/logo-designs/skyline-designers-logo.jpeg",
+    description: "Geometric corporate logo design for an architecture and construction firm, combining dynamic skyscraper silhouette vectors, arching bridge elements, and modern typography.",
+    tags: ["Corporate Logo", "Architecture", "Vector Mark", "Brand Identity"],
+  },
+  {
+    id: "shiva-matte-painting",
+    num: "08",
+    title: "Lord Shiva — Mount Kailash Fantasy Matte Painting",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/shiva-matte-painting.png",
+    description: "High-detail digital fantasy matte painting and surreal compositing of Lord Shiva in deep meditation amidst the Himalayan heights, complete with roaring waterfalls, Shivling, and Trishula.",
+    tags: ["Matte Painting", "Digital Compositing", "Photoshop Art", "Spiritual Fantasy"],
+  },
+  {
+    id: "coffee-shop-concept",
+    num: "09",
+    title: "Artisan Coffee Shop — Wall Decor & Concept Art",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/designs/coffee-shop-concept.jpeg",
+    description: "Detailed rustic cafe interior visualization and wall artwork combining distressed brick textures, vintage coffee signage, arched window frames, and botanical styling.",
+    tags: ["Interior Art", "Concept Art", "Architectural", "Texturing"],
+  },
+  {
+    id: "boston-streetwear",
+    num: "10",
+    title: "Boston Streetwear — 'Fashion That Speaks You' Poster",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/boston-streetwear-poster.png",
+    description: "Contemporary urban oversized streetwear campaign poster showcasing mannequin styling, sage green earth tones, and bold editorial headline typography.",
+    tags: ["Streetwear Poster", "Fashion Editorial", "Typography", "Urban Apparel"],
+  },
+  {
+    id: "tom-and-jerry-art",
+    num: "11",
+    title: "Tom & Jerry — Classic Animated Vector Art",
+    category: "Posters & Art",
+    year: "2025",
+    img: "/posters/tom-and-jerry-art.jpeg",
+    description: "Clean line vector tribute illustration of the legendary Hanna-Barbera duo Tom and Jerry, rendered in bold cartoon outlines and vibrant pastel palette.",
+    tags: ["Vector Illustration", "Character Art", "Cartoon", "Illustrator"],
+  },
+  {
+    id: "cyan-specular-sphere",
+    num: "12",
+    title: "Cyan Specular Sphere — 3D Lighting & Form Study",
+    category: "3D Modeling",
+    year: "2025",
+    img: "/3d-designs/cyan-sphere.jpeg",
+    description: "Foundational 3D volumetric sphere study examining primary specular highlights, ambient bounce fill, core shadow gradients, and cast drop shadows.",
+    tags: ["3D Study", "Lighting & Shading", "Form & Volume", "Digital Render"],
+  },
+
+  // ─── COMMERCIAL BRANDING & ADVERTISING CAMPAIGNS ───
   {
     id: "minimalist-vitamin-c",
-    num: "01",
+    num: "13",
     title: "Minimalist Skincare — Vitamin C Storefront & Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -29,7 +155,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "dot-and-key-sunscreen",
-    num: "02",
+    num: "14",
     title: "Dot & Key Skincare — Sun Protect SPF 50+ Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -43,7 +169,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "the-comfort-studio",
-    num: "03",
+    num: "15",
     title: "The Comfort Studio — Furniture Campaign & Web UI",
     category: "Brand Identity",
     year: "2025",
@@ -57,7 +183,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "urbanista-spotify-billboard",
-    num: "04",
+    num: "16",
     title: "Urbanista × Spotify — Audio Billboard Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -71,7 +197,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "crocs-step-into-ease",
-    num: "05",
+    num: "17",
     title: "Crocs — Step Into Ease Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -81,7 +207,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "nike-suede-poster",
-    num: "06",
+    num: "18",
     title: "Nike Suede XL — Commercial Footwear Poster",
     category: "Posters & Art",
     year: "2025",
@@ -91,17 +217,21 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "kit-chen-brochure",
-    num: "07",
+    num: "19",
     title: "KIT CHEN. — Luxury Interior 4-Panel Brochure",
     category: "Book & Editorial",
     year: "2025",
     img: "/book-designs/kitchen-brochure.jpeg",
+    pages: [
+      "/book-designs/kitchen-brochure.jpeg",
+      "/book-designs/kitchen-brochure-spread.jpeg",
+    ],
     description: "Architectural 4-panel accordion & Z-fold commercial brochure design and 3D studio mockup for KIT CHEN. Features warm ambient illumination, interior photography, and modular kitchen specifications.",
     tags: ["Brochure Design", "Z-Fold", "Interior Architecture", "Print & Mockup"],
   },
   {
     id: "womens-leather-bag",
-    num: "08",
+    num: "20",
     title: "Women's Bag — Eco-Leather Product Promo",
     category: "Brand Identity",
     year: "2025",
@@ -111,7 +241,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "silent-exporter-branding",
-    num: "09",
+    num: "21",
     title: "The Silent Exporter — Global Brand Identity & Packaging",
     category: "Brand Identity",
     year: "2025",
@@ -121,7 +251,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "silent-exporter-logo",
-    num: "10",
+    num: "22",
     title: "The Silent Exporter — Brandmark & Monogram",
     category: "Brand Identity",
     year: "2025",
@@ -131,7 +261,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "porsche-911-thrill",
-    num: "11",
+    num: "23",
     title: "Porsche 911 GT3 — Experience The Thrill",
     category: "Posters & Art",
     year: "2025",
@@ -141,7 +271,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "spiderman-tom-holland",
-    num: "12",
+    num: "24",
     title: "Spider-Man / Tom Holland — The Hero",
     category: "Posters & Art",
     year: "2025",
@@ -151,7 +281,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "take-off-your-mask",
-    num: "13",
+    num: "25",
     title: "Take Off Your Mask — Surreal Editorial",
     category: "Posters & Art",
     year: "2025",
@@ -161,7 +291,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "kanye-sliced-portrait",
-    num: "14",
+    num: "26",
     title: "Photo Manipulation — Sliced Portrait Study",
     category: "Posters & Art",
     year: "2025",
@@ -173,7 +303,7 @@ const PROJECTS: ProjectItem[] = [
   // ─── FOUNDATIONAL EDITORIAL, BRANDING & 3D ARTWORKS ───
   {
     id: "mental-health-book",
-    num: "15",
+    num: "27",
     title: "Mental Health Awareness — 21-Page Book",
     category: "Book & Editorial",
     year: "2025",
@@ -184,7 +314,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "she-healed-herself",
-    num: "16",
+    num: "28",
     title: "She Healed Herself — Book Design",
     category: "Book & Editorial",
     year: "2025",
@@ -195,7 +325,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "sony-product-catalog",
-    num: "17",
+    num: "29",
     title: "Product Catalog — The Art of Capturing Life",
     category: "Book & Editorial",
     year: "2025",
@@ -205,7 +335,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "spicy-food-menu",
-    num: "18",
+    num: "30",
     title: "Spicy Food — Restaurant Menu Card",
     category: "Book & Editorial",
     year: "2025",
@@ -215,7 +345,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "crime-newspaper",
-    num: "19",
+    num: "31",
     title: "Crime Newspaper — Retro Tabloid Layout",
     category: "Book & Editorial",
     year: "2025",
@@ -225,7 +355,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "palak-co-skincare",
-    num: "20",
+    num: "32",
     title: "The Palak Co. — Luxury Skincare",
     category: "Brand Identity",
     year: "2025",
@@ -235,7 +365,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "bare-wear-apparel",
-    num: "21",
+    num: "33",
     title: "Bare Wear — Streetwear Identity",
     category: "Brand Identity",
     year: "2025",
@@ -245,7 +375,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "bare-wear-logo",
-    num: "22",
+    num: "34",
     title: "Bare Wear Logo — Negative Space Mark",
     category: "Brand Identity",
     year: "2025",
@@ -255,7 +385,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "the-palak-co-logo",
-    num: "23",
+    num: "35",
     title: "The Palak Co. — Brandmark",
     category: "Brand Identity",
     year: "2025",
@@ -265,7 +395,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "design-adda-studio",
-    num: "24",
+    num: "36",
     title: "Design Adda Studio — Brand Identity",
     category: "Brand Identity",
     year: "2025",
@@ -275,7 +405,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "pepsi-3d-can",
-    num: "25",
+    num: "37",
     title: "3D Pepsi Can — Dynamic Render",
     category: "3D Modeling",
     year: "2025",
@@ -285,7 +415,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "fanta-3d-bottle",
-    num: "26",
+    num: "38",
     title: "Fanta Orange — 3D Bottle Design",
     category: "3D Modeling",
     year: "2025",
@@ -295,7 +425,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "shampoo-3d-bottle",
-    num: "27",
+    num: "39",
     title: "3D Shampoo Container & Pump",
     category: "3D Modeling",
     year: "2025",
@@ -305,7 +435,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "banaras-cultural-poster",
-    num: "28",
+    num: "40",
     title: "Banaras — Spiritual & Ancient City",
     category: "Posters & Art",
     year: "2025",
@@ -315,7 +445,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "fashion-model-sale",
-    num: "29",
+    num: "41",
     title: "Special Sale — 80% Off Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -325,7 +455,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "mono-new-arrival",
-    num: "30",
+    num: "42",
     title: "MONO — New Arrival",
     category: "Posters & Art",
     year: "2025",
@@ -335,7 +465,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "money-heist-poster",
-    num: "31",
+    num: "43",
     title: "Money Heist — Cinematic Film Poster",
     category: "Posters & Art",
     year: "2024",
@@ -345,7 +475,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "moonlit-waterfall",
-    num: "32",
+    num: "44",
     title: "Moonlit Waterfall — Fantasy Matte Painting",
     category: "Posters & Art",
     year: "2025",
@@ -355,7 +485,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "vintage-car-drive",
-    num: "33",
+    num: "45",
     title: "Vintage Car Drive — Film Color Grading",
     category: "Posters & Art",
     year: "2025",
@@ -365,7 +495,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "iron-man-typography",
-    num: "34",
+    num: "46",
     title: "Tony Stark — Typography Portrait",
     category: "Posters & Art",
     year: "2025",
@@ -375,7 +505,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "retro-stipple-portrait",
-    num: "35",
+    num: "47",
     title: "Retro Ink Stipple Portrait",
     category: "Posters & Art",
     year: "2025",
@@ -385,7 +515,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "landscape-cabin-grading",
-    num: "36",
+    num: "48",
     title: "Alpine Cabin — Before/After Recolor",
     category: "Posters & Art",
     year: "2025",
@@ -988,7 +1118,7 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-6 sm:gap-10 mt-10 pt-8 border-t border-white/10 text-center w-full max-w-lg">
             <div>
               <div className="stat-ring inline-block">
-                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">36+</div>
+                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">48+</div>
               </div>
               <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Portfolio Works</div>
             </div>
