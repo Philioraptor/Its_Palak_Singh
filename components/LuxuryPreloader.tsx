@@ -7,31 +7,31 @@ interface PreloaderProps {
 
 const PRELOAD_IMAGES = [
   {
-    src: "/palak-pics/Palak%20professional%20picture.jpeg",
+    src: "/palak-pics/loader-1.webp",
     title: "Palak Singh",
     subtitle: "Visual Identity & Editorial Direction",
     badge: "01 / 05",
   },
   {
-    src: "/palak-pics/Palak%20professional%20picture3.jpeg",
+    src: "/palak-pics/loader-2.webp",
     title: "Graphic Designer",
     subtitle: "Brand Systems & Commercial Packaging",
     badge: "02 / 05",
   },
   {
-    src: "/palak-pics/Palak%20professional%20picture2.jpeg",
+    src: "/palak-pics/loader-3.webp",
     title: "Brand Architect",
     subtitle: "Publication Design & Typography Systems",
     badge: "03 / 05",
   },
   {
-    src: "/palak-pics/file_0000000041dc820883502640578a4b30.png",
+    src: "/palak-pics/loader-4.webp",
     title: "Creative Artist",
     subtitle: "Digital Inking & Character Styling",
     badge: "04 / 05",
   },
   {
-    src: "/palak-pics/file_00000000ac7c8208baaafdae4a4b927b.png",
+    src: "/palak-pics/loader-5.webp",
     title: "Visual Storyteller",
     subtitle: "Vector Art & Modern Aesthetics",
     badge: "05 / 05",
@@ -49,6 +49,14 @@ export default function LuxuryPreloader({ onComplete }: PreloaderProps) {
     onCompleteRef.current = onComplete;
   }, [onComplete]);
 
+  // Pre-cache all 5 images immediately into browser cache
+  useEffect(() => {
+    PRELOAD_IMAGES.forEach((img) => {
+      const i = new window.Image();
+      i.src = img.src;
+    });
+  }, []);
+
   const finishLoader = () => {
     setIsExiting(true);
     setTimeout(() => {
@@ -59,7 +67,7 @@ export default function LuxuryPreloader({ onComplete }: PreloaderProps) {
 
   useEffect(() => {
     const startTime = Date.now();
-    const duration = 2800; // 2.8s smooth cinematic entrance
+    const duration = 3200; // 3.2s smooth cinematic showcase (~640ms per image)
 
     const timer = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -139,8 +147,22 @@ export default function LuxuryPreloader({ onComplete }: PreloaderProps) {
           <div className="absolute top-2 right-2 text-[10px] text-[#c9a84c] font-mono pointer-events-none">✦</div>
         </div>
 
+        {/* 5-Step Visual Image Indicators */}
+        <div className="flex items-center gap-1.5 mt-4">
+          {PRELOAD_IMAGES.map((_, i) => (
+            <div
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                activeImageIndex === i
+                  ? "w-7 bg-[#c9a84c] shadow-[0_0_10px_#c9a84c]"
+                  : "w-2 bg-white/20"
+              }`}
+            />
+          ))}
+        </div>
+
         {/* Status Prompt */}
-        <div className="mt-5 flex items-center justify-center gap-2 text-xs font-mono text-white/70 uppercase tracking-widest">
+        <div className="mt-3 flex items-center justify-center gap-2 text-xs font-mono text-white/70 uppercase tracking-widest">
           <span className="text-[#c9a84c]">Loading Visual Experience</span>
           <span className="inline-block animate-pulse">...</span>
         </div>
