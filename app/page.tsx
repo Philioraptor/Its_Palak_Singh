@@ -11,10 +11,76 @@ const MENTAL_HEALTH_PAGES = Array.from(
 );
 
 const PROJECTS: ProjectItem[] = [
+  // ─── LATEST COMMISSIONS & CAMPAIGNS (NEWEST FIRST) ───
+  {
+    id: "jarurat-care-cancer-alone",
+    num: "01",
+    title: "Jarurat Care Foundation — 'No One Should Face Cancer Alone' Campaign",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/jarurat-care-cancer-alone.jpg",
+    pages: [
+      "/designs/jarurat-care-cancer-alone.jpg",
+      "/designs/jarurat-care-who-we-are.jpg",
+      "/designs/jarurat-care-different-for-everyone.jpg",
+    ],
+    description: "Compassionate healthcare awareness and patient-caregiver support campaign for Jarurat Care Foundation, pairing intimate emotive photography with strong editorial typography.",
+    tags: ["Social Campaign", "Healthcare Branding", "Patient Support", "Editorial Layout"],
+  },
+  {
+    id: "jarurat-care-who-we-are",
+    num: "02",
+    title: "Jarurat Care Foundation — 'Who We Are' Community Infographic",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/jarurat-care-who-we-are.jpg",
+    pages: [
+      "/designs/jarurat-care-who-we-are.jpg",
+      "/designs/jarurat-care-cancer-alone.jpg",
+      "/designs/jarurat-care-different-for-everyone.jpg",
+    ],
+    description: "Brand mission and healthcare service breakdown card communicating patient and caregiver support, trusted resources, and community guidance with crisp medical iconography.",
+    tags: ["Patient Support", "Infographic Design", "Healthcare", "Brand Identity"],
+  },
+  {
+    id: "jarurat-care-different-for-everyone",
+    num: "03",
+    title: "Jarurat Care Foundation — 'Care Looks Different For Everyone' Ad",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/jarurat-care-different-for-everyone.jpg",
+    pages: [
+      "/designs/jarurat-care-different-for-everyone.jpg",
+      "/designs/jarurat-care-cancer-alone.jpg",
+      "/designs/jarurat-care-who-we-are.jpg",
+    ],
+    description: "Community-centric healthcare social card highlighting emotional support, practical guidance, and active listening with curved framing and warm human-centered imagery.",
+    tags: ["Community Awareness", "Social Media Ad", "Healthcare Branding", "Visual Design"],
+  },
+  {
+    id: "allo-jute-bag",
+    num: "04",
+    title: "allo Innoware — Goodness of Nature Eco Jute Bag Feature Guide",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/allo-jute-bag-infographic.jpg",
+    description: "Commercial product feature infographic and eco-packaging showcase for allo Innoware, highlighting 100% natural fiber, bottle holder, easy-grip handles, and multipurpose utility.",
+    tags: ["Product Infographic", "Eco Packaging", "Feature Callouts", "Brand Identity"],
+  },
+  {
+    id: "stainless-steel-tumbler",
+    num: "05",
+    title: "Stainless Steel Travel Tumbler — 3D Product Visualization",
+    category: "3D Modeling",
+    year: "2025",
+    img: "/3d-designs/steel-tumbler-render.jpg",
+    description: "Detailed 3D container model and studio product render of a brushed stainless steel insulated travel mug with textured cork insulation sleeve, transparent lid, and bent metal straw.",
+    tags: ["3D Product Render", "Industrial Design", "Studio Lighting", "Metal Shading"],
+  },
   // ─── LATEST COMMISSIONS, EDITORIAL & BRANDING (NEWEST FIRST) ───
   {
     id: "khoobsurat-magazine",
-    num: "01",
+    num: "06",
     title: "Khoobsurat (खूबसूरत) — Aishwarya Rai Editorial Magazine",
     category: "Book & Editorial",
     year: "2025",
@@ -24,7 +90,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "dhoni-magazine",
-    num: "02",
+    num: "07",
     title: "DHONI 07 — Thala Helicopter Shot Magazine Cover",
     category: "Book & Editorial",
     year: "2025",
@@ -34,7 +100,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "yum-yard-brand",
-    num: "03",
+    num: "08",
     title: "Yum Yard — Restaurant Identity & Food Ordering UI",
     category: "Brand Identity",
     year: "2025",
@@ -48,7 +114,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "sweet-treats-cookies",
-    num: "04",
+    num: "09",
     title: "Sweet Treats Cookies — Bakery Social Ad Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -58,7 +124,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "strawberry-icecream",
-    num: "05",
+    num: "10",
     title: "Rich Flavoured Strawberry — Artisan Ice Cream Poster",
     category: "Posters & Art",
     year: "2025",
@@ -68,7 +134,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "kitkat-break-le",
-    num: "06",
+    num: "11",
     title: "Nestlé KitKat — 'Break Le... But Make It Funny!' Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -78,7 +144,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "skyline-designers",
-    num: "07",
+    num: "12",
     title: "Skyline Designers — Corporate Architectural Identity",
     category: "Brand Identity",
     year: "2025",
@@ -88,7 +154,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "shiva-matte-painting",
-    num: "08",
+    num: "13",
     title: "Lord Shiva — Mount Kailash Fantasy Matte Painting",
     category: "Posters & Art",
     year: "2025",
@@ -98,7 +164,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "coffee-shop-concept",
-    num: "09",
+    num: "14",
     title: "Artisan Coffee Shop — Wall Decor & Concept Art",
     category: "Posters & Art",
     year: "2025",
@@ -108,7 +174,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "boston-streetwear",
-    num: "10",
+    num: "15",
     title: "Boston Streetwear — 'Fashion That Speaks You' Poster",
     category: "Posters & Art",
     year: "2025",
@@ -118,7 +184,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "tom-and-jerry-art",
-    num: "11",
+    num: "16",
     title: "Tom & Jerry — Classic Animated Vector Art",
     category: "Posters & Art",
     year: "2025",
@@ -128,7 +194,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "cyan-specular-sphere",
-    num: "12",
+    num: "17",
     title: "Cyan Specular Sphere — 3D Lighting & Form Study",
     category: "3D Modeling",
     year: "2025",
@@ -140,7 +206,7 @@ const PROJECTS: ProjectItem[] = [
   // ─── COMMERCIAL BRANDING & ADVERTISING CAMPAIGNS ───
   {
     id: "minimalist-vitamin-c",
-    num: "13",
+    num: "18",
     title: "Minimalist Skincare — Vitamin C Storefront & Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -155,7 +221,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "dot-and-key-sunscreen",
-    num: "14",
+    num: "19",
     title: "Dot & Key Skincare — Sun Protect SPF 50+ Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -169,7 +235,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "the-comfort-studio",
-    num: "15",
+    num: "20",
     title: "The Comfort Studio — Furniture Campaign & Web UI",
     category: "Brand Identity",
     year: "2025",
@@ -183,7 +249,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "urbanista-spotify-billboard",
-    num: "16",
+    num: "21",
     title: "Urbanista × Spotify — Audio Billboard Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -197,7 +263,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "crocs-step-into-ease",
-    num: "17",
+    num: "22",
     title: "Crocs — Step Into Ease Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -207,7 +273,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "nike-suede-poster",
-    num: "18",
+    num: "23",
     title: "Nike Suede XL — Commercial Footwear Poster",
     category: "Posters & Art",
     year: "2025",
@@ -217,7 +283,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "kit-chen-brochure",
-    num: "19",
+    num: "24",
     title: "KIT CHEN. — Luxury Interior 4-Panel Brochure",
     category: "Book & Editorial",
     year: "2025",
@@ -231,7 +297,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "womens-leather-bag",
-    num: "20",
+    num: "25",
     title: "Women's Bag — Eco-Leather Product Promo",
     category: "Brand Identity",
     year: "2025",
@@ -241,7 +307,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "silent-exporter-branding",
-    num: "21",
+    num: "26",
     title: "The Silent Exporter — Global Brand Identity & Packaging",
     category: "Brand Identity",
     year: "2025",
@@ -251,7 +317,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "silent-exporter-logo",
-    num: "22",
+    num: "27",
     title: "The Silent Exporter — Brandmark & Monogram",
     category: "Brand Identity",
     year: "2025",
@@ -261,7 +327,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "porsche-911-thrill",
-    num: "23",
+    num: "28",
     title: "Porsche 911 GT3 — Experience The Thrill",
     category: "Posters & Art",
     year: "2025",
@@ -271,7 +337,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "spiderman-tom-holland",
-    num: "24",
+    num: "29",
     title: "Spider-Man / Tom Holland — The Hero",
     category: "Posters & Art",
     year: "2025",
@@ -281,7 +347,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "take-off-your-mask",
-    num: "25",
+    num: "30",
     title: "Take Off Your Mask — Surreal Editorial",
     category: "Posters & Art",
     year: "2025",
@@ -291,7 +357,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "kanye-sliced-portrait",
-    num: "26",
+    num: "31",
     title: "Photo Manipulation — Sliced Portrait Study",
     category: "Posters & Art",
     year: "2025",
@@ -303,7 +369,7 @@ const PROJECTS: ProjectItem[] = [
   // ─── FOUNDATIONAL EDITORIAL, BRANDING & 3D ARTWORKS ───
   {
     id: "mental-health-book",
-    num: "27",
+    num: "32",
     title: "Mental Health Awareness — 21-Page Book",
     category: "Book & Editorial",
     year: "2025",
@@ -314,7 +380,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "she-healed-herself",
-    num: "28",
+    num: "33",
     title: "She Healed Herself — Book Design",
     category: "Book & Editorial",
     year: "2025",
@@ -325,7 +391,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "sony-product-catalog",
-    num: "29",
+    num: "34",
     title: "Product Catalog — The Art of Capturing Life",
     category: "Book & Editorial",
     year: "2025",
@@ -335,7 +401,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "spicy-food-menu",
-    num: "30",
+    num: "35",
     title: "Spicy Food — Restaurant Menu Card",
     category: "Book & Editorial",
     year: "2025",
@@ -345,7 +411,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "crime-newspaper",
-    num: "31",
+    num: "36",
     title: "Crime Newspaper — Retro Tabloid Layout",
     category: "Book & Editorial",
     year: "2025",
@@ -355,7 +421,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "palak-co-skincare",
-    num: "32",
+    num: "37",
     title: "The Palak Co. — Luxury Skincare",
     category: "Brand Identity",
     year: "2025",
@@ -365,7 +431,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "bare-wear-apparel",
-    num: "33",
+    num: "38",
     title: "Bare Wear — Streetwear Identity",
     category: "Brand Identity",
     year: "2025",
@@ -375,7 +441,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "bare-wear-logo",
-    num: "34",
+    num: "39",
     title: "Bare Wear Logo — Negative Space Mark",
     category: "Brand Identity",
     year: "2025",
@@ -385,7 +451,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "the-palak-co-logo",
-    num: "35",
+    num: "40",
     title: "The Palak Co. — Brandmark",
     category: "Brand Identity",
     year: "2025",
@@ -395,7 +461,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "design-adda-studio",
-    num: "36",
+    num: "41",
     title: "Design Adda Studio — Brand Identity",
     category: "Brand Identity",
     year: "2025",
@@ -405,7 +471,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "pepsi-3d-can",
-    num: "37",
+    num: "42",
     title: "3D Pepsi Can — Dynamic Render",
     category: "3D Modeling",
     year: "2025",
@@ -415,7 +481,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "fanta-3d-bottle",
-    num: "38",
+    num: "43",
     title: "Fanta Orange — 3D Bottle Design",
     category: "3D Modeling",
     year: "2025",
@@ -425,7 +491,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "shampoo-3d-bottle",
-    num: "39",
+    num: "44",
     title: "3D Shampoo Container & Pump",
     category: "3D Modeling",
     year: "2025",
@@ -435,7 +501,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "banaras-cultural-poster",
-    num: "40",
+    num: "45",
     title: "Banaras — Spiritual & Ancient City",
     category: "Posters & Art",
     year: "2025",
@@ -445,7 +511,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "fashion-model-sale",
-    num: "41",
+    num: "46",
     title: "Special Sale — 80% Off Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -455,7 +521,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "mono-new-arrival",
-    num: "42",
+    num: "47",
     title: "MONO — New Arrival",
     category: "Posters & Art",
     year: "2025",
@@ -465,7 +531,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "money-heist-poster",
-    num: "43",
+    num: "48",
     title: "Money Heist — Cinematic Film Poster",
     category: "Posters & Art",
     year: "2024",
@@ -475,7 +541,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "moonlit-waterfall",
-    num: "44",
+    num: "49",
     title: "Moonlit Waterfall — Fantasy Matte Painting",
     category: "Posters & Art",
     year: "2025",
@@ -485,7 +551,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "vintage-car-drive",
-    num: "45",
+    num: "50",
     title: "Vintage Car Drive — Film Color Grading",
     category: "Posters & Art",
     year: "2025",
@@ -495,7 +561,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "iron-man-typography",
-    num: "46",
+    num: "51",
     title: "Tony Stark — Typography Portrait",
     category: "Posters & Art",
     year: "2025",
@@ -505,7 +571,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "retro-stipple-portrait",
-    num: "47",
+    num: "52",
     title: "Retro Ink Stipple Portrait",
     category: "Posters & Art",
     year: "2025",
@@ -515,7 +581,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "landscape-cabin-grading",
-    num: "48",
+    num: "53",
     title: "Alpine Cabin — Before/After Recolor",
     category: "Posters & Art",
     year: "2025",
@@ -1118,7 +1184,7 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-6 sm:gap-10 mt-10 pt-8 border-t border-white/10 text-center w-full max-w-lg">
             <div>
               <div className="stat-ring inline-block">
-                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">48+</div>
+                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">53+</div>
               </div>
               <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Portfolio Works</div>
             </div>
