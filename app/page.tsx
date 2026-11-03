@@ -11,10 +11,28 @@ const MENTAL_HEALTH_PAGES = Array.from(
 );
 
 const PROJECTS: ProjectItem[] = [
+  // ─── LATEST COMMISSIONS & SOCIAL CAROUSELS (NEWEST FIRST) ───
+  {
+    id: "neet-pg-playbook-carousel",
+    num: "01",
+    title: "The NEET PG Playbook — 5-Slide Educational Study Carousel",
+    category: "Brand Identity",
+    year: "2025",
+    img: "/designs/neet-pg-carousel-01.jpg",
+    pages: [
+      "/designs/neet-pg-carousel-01.jpg",
+      "/designs/neet-pg-carousel-02.jpg",
+      "/designs/neet-pg-carousel-03.jpg",
+      "/designs/neet-pg-carousel-04.jpg",
+      "/designs/neet-pg-carousel-05.jpg",
+    ],
+    description: "Multi-slide educational Instagram study system carousel for Budding Marriners / NEET PG Study Series. Features high-contrast dark theme, active recall frameworks, spaced revision roadmap, and mock test analytics.",
+    tags: ["Social Carousel", "Instagram Carousel", "Educational Graphic", "Typography System"],
+  },
   // ─── LATEST COMMISSIONS & CAMPAIGNS (NEWEST FIRST) ───
   {
     id: "jarurat-care-cancer-alone",
-    num: "01",
+    num: "02",
     title: "Jarurat Care Foundation — 'No One Should Face Cancer Alone' Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -29,7 +47,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "jarurat-care-who-we-are",
-    num: "02",
+    num: "03",
     title: "Jarurat Care Foundation — 'Who We Are' Community Infographic",
     category: "Brand Identity",
     year: "2025",
@@ -44,7 +62,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "jarurat-care-different-for-everyone",
-    num: "03",
+    num: "04",
     title: "Jarurat Care Foundation — 'Care Looks Different For Everyone' Ad",
     category: "Brand Identity",
     year: "2025",
@@ -59,7 +77,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "allo-jute-bag",
-    num: "04",
+    num: "05",
     title: "allo Innoware — Goodness of Nature Eco Jute Bag Feature Guide",
     category: "Brand Identity",
     year: "2025",
@@ -69,7 +87,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "stainless-steel-tumbler",
-    num: "05",
+    num: "06",
     title: "Stainless Steel Travel Tumbler — 3D Product Visualization",
     category: "3D Modeling",
     year: "2025",
@@ -80,7 +98,7 @@ const PROJECTS: ProjectItem[] = [
   // ─── LATEST COMMISSIONS, EDITORIAL & BRANDING (NEWEST FIRST) ───
   {
     id: "khoobsurat-magazine",
-    num: "06",
+    num: "07",
     title: "Khoobsurat (खूबसूरत) — Aishwarya Rai Editorial Magazine",
     category: "Book & Editorial",
     year: "2025",
@@ -90,7 +108,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "dhoni-magazine",
-    num: "07",
+    num: "08",
     title: "DHONI 07 — Thala Helicopter Shot Magazine Cover",
     category: "Book & Editorial",
     year: "2025",
@@ -100,7 +118,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "yum-yard-brand",
-    num: "08",
+    num: "09",
     title: "Yum Yard — Restaurant Identity & Food Ordering UI",
     category: "Brand Identity",
     year: "2025",
@@ -114,7 +132,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "sweet-treats-cookies",
-    num: "09",
+    num: "10",
     title: "Sweet Treats Cookies — Bakery Social Ad Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -124,7 +142,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "strawberry-icecream",
-    num: "10",
+    num: "11",
     title: "Rich Flavoured Strawberry — Artisan Ice Cream Poster",
     category: "Posters & Art",
     year: "2025",
@@ -134,7 +152,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "kitkat-break-le",
-    num: "11",
+    num: "12",
     title: "Nestlé KitKat — 'Break Le... But Make It Funny!' Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -144,7 +162,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "skyline-designers",
-    num: "12",
+    num: "13",
     title: "Skyline Designers — Corporate Architectural Identity",
     category: "Brand Identity",
     year: "2025",
@@ -154,7 +172,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "shiva-matte-painting",
-    num: "13",
+    num: "14",
     title: "Lord Shiva — Mount Kailash Fantasy Matte Painting",
     category: "Posters & Art",
     year: "2025",
@@ -164,7 +182,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "coffee-shop-concept",
-    num: "14",
+    num: "15",
     title: "Artisan Coffee Shop — Wall Decor & Concept Art",
     category: "Posters & Art",
     year: "2025",
@@ -174,7 +192,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "boston-streetwear",
-    num: "15",
+    num: "16",
     title: "Boston Streetwear — 'Fashion That Speaks You' Poster",
     category: "Posters & Art",
     year: "2025",
@@ -184,7 +202,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "tom-and-jerry-art",
-    num: "16",
+    num: "17",
     title: "Tom & Jerry — Classic Animated Vector Art",
     category: "Posters & Art",
     year: "2025",
@@ -194,7 +212,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "cyan-specular-sphere",
-    num: "17",
+    num: "18",
     title: "Cyan Specular Sphere — 3D Lighting & Form Study",
     category: "3D Modeling",
     year: "2025",
@@ -206,7 +224,7 @@ const PROJECTS: ProjectItem[] = [
   // ─── COMMERCIAL BRANDING & ADVERTISING CAMPAIGNS ───
   {
     id: "minimalist-vitamin-c",
-    num: "18",
+    num: "19",
     title: "Minimalist Skincare — Vitamin C Storefront & Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -221,7 +239,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "dot-and-key-sunscreen",
-    num: "19",
+    num: "20",
     title: "Dot & Key Skincare — Sun Protect SPF 50+ Campaign",
     category: "Brand Identity",
     year: "2025",
@@ -235,7 +253,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "the-comfort-studio",
-    num: "20",
+    num: "21",
     title: "The Comfort Studio — Furniture Campaign & Web UI",
     category: "Brand Identity",
     year: "2025",
@@ -249,7 +267,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "urbanista-spotify-billboard",
-    num: "21",
+    num: "22",
     title: "Urbanista × Spotify — Audio Billboard Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -263,7 +281,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "crocs-step-into-ease",
-    num: "22",
+    num: "23",
     title: "Crocs — Step Into Ease Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -273,7 +291,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "nike-suede-poster",
-    num: "23",
+    num: "24",
     title: "Nike Suede XL — Commercial Footwear Poster",
     category: "Posters & Art",
     year: "2025",
@@ -283,7 +301,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "kit-chen-brochure",
-    num: "24",
+    num: "25",
     title: "KIT CHEN. — Luxury Interior 4-Panel Brochure",
     category: "Book & Editorial",
     year: "2025",
@@ -297,7 +315,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "womens-leather-bag",
-    num: "25",
+    num: "26",
     title: "Women's Bag — Eco-Leather Product Promo",
     category: "Brand Identity",
     year: "2025",
@@ -307,7 +325,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "silent-exporter-branding",
-    num: "26",
+    num: "27",
     title: "The Silent Exporter — Global Brand Identity & Packaging",
     category: "Brand Identity",
     year: "2025",
@@ -317,7 +335,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "silent-exporter-logo",
-    num: "27",
+    num: "28",
     title: "The Silent Exporter — Brandmark & Monogram",
     category: "Brand Identity",
     year: "2025",
@@ -327,7 +345,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "porsche-911-thrill",
-    num: "28",
+    num: "29",
     title: "Porsche 911 GT3 — Experience The Thrill",
     category: "Posters & Art",
     year: "2025",
@@ -337,7 +355,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "spiderman-tom-holland",
-    num: "29",
+    num: "30",
     title: "Spider-Man / Tom Holland — The Hero",
     category: "Posters & Art",
     year: "2025",
@@ -347,7 +365,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "take-off-your-mask",
-    num: "30",
+    num: "31",
     title: "Take Off Your Mask — Surreal Editorial",
     category: "Posters & Art",
     year: "2025",
@@ -357,7 +375,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "kanye-sliced-portrait",
-    num: "31",
+    num: "32",
     title: "Photo Manipulation — Sliced Portrait Study",
     category: "Posters & Art",
     year: "2025",
@@ -369,7 +387,7 @@ const PROJECTS: ProjectItem[] = [
   // ─── FOUNDATIONAL EDITORIAL, BRANDING & 3D ARTWORKS ───
   {
     id: "mental-health-book",
-    num: "32",
+    num: "33",
     title: "Mental Health Awareness — 21-Page Book",
     category: "Book & Editorial",
     year: "2025",
@@ -380,7 +398,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "she-healed-herself",
-    num: "33",
+    num: "34",
     title: "She Healed Herself — Book Design",
     category: "Book & Editorial",
     year: "2025",
@@ -391,7 +409,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "sony-product-catalog",
-    num: "34",
+    num: "35",
     title: "Product Catalog — The Art of Capturing Life",
     category: "Book & Editorial",
     year: "2025",
@@ -401,7 +419,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "spicy-food-menu",
-    num: "35",
+    num: "36",
     title: "Spicy Food — Restaurant Menu Card",
     category: "Book & Editorial",
     year: "2025",
@@ -411,7 +429,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "crime-newspaper",
-    num: "36",
+    num: "37",
     title: "Crime Newspaper — Retro Tabloid Layout",
     category: "Book & Editorial",
     year: "2025",
@@ -421,7 +439,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "palak-co-skincare",
-    num: "37",
+    num: "38",
     title: "The Palak Co. — Luxury Skincare",
     category: "Brand Identity",
     year: "2025",
@@ -431,7 +449,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "bare-wear-apparel",
-    num: "38",
+    num: "39",
     title: "Bare Wear — Streetwear Identity",
     category: "Brand Identity",
     year: "2025",
@@ -441,7 +459,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "bare-wear-logo",
-    num: "39",
+    num: "40",
     title: "Bare Wear Logo — Negative Space Mark",
     category: "Brand Identity",
     year: "2025",
@@ -451,7 +469,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "the-palak-co-logo",
-    num: "40",
+    num: "41",
     title: "The Palak Co. — Brandmark",
     category: "Brand Identity",
     year: "2025",
@@ -461,7 +479,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "design-adda-studio",
-    num: "41",
+    num: "42",
     title: "Design Adda Studio — Brand Identity",
     category: "Brand Identity",
     year: "2025",
@@ -471,7 +489,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "pepsi-3d-can",
-    num: "42",
+    num: "43",
     title: "3D Pepsi Can — Dynamic Render",
     category: "3D Modeling",
     year: "2025",
@@ -481,7 +499,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "fanta-3d-bottle",
-    num: "43",
+    num: "44",
     title: "Fanta Orange — 3D Bottle Design",
     category: "3D Modeling",
     year: "2025",
@@ -491,7 +509,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "shampoo-3d-bottle",
-    num: "44",
+    num: "45",
     title: "3D Shampoo Container & Pump",
     category: "3D Modeling",
     year: "2025",
@@ -501,7 +519,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "banaras-cultural-poster",
-    num: "45",
+    num: "46",
     title: "Banaras — Spiritual & Ancient City",
     category: "Posters & Art",
     year: "2025",
@@ -511,7 +529,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "fashion-model-sale",
-    num: "46",
+    num: "47",
     title: "Special Sale — 80% Off Campaign",
     category: "Posters & Art",
     year: "2025",
@@ -521,7 +539,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "mono-new-arrival",
-    num: "47",
+    num: "48",
     title: "MONO — New Arrival",
     category: "Posters & Art",
     year: "2025",
@@ -531,7 +549,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "money-heist-poster",
-    num: "48",
+    num: "49",
     title: "Money Heist — Cinematic Film Poster",
     category: "Posters & Art",
     year: "2024",
@@ -541,7 +559,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "moonlit-waterfall",
-    num: "49",
+    num: "50",
     title: "Moonlit Waterfall — Fantasy Matte Painting",
     category: "Posters & Art",
     year: "2025",
@@ -551,7 +569,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "vintage-car-drive",
-    num: "50",
+    num: "51",
     title: "Vintage Car Drive — Film Color Grading",
     category: "Posters & Art",
     year: "2025",
@@ -561,7 +579,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "iron-man-typography",
-    num: "51",
+    num: "52",
     title: "Tony Stark — Typography Portrait",
     category: "Posters & Art",
     year: "2025",
@@ -571,7 +589,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "retro-stipple-portrait",
-    num: "52",
+    num: "53",
     title: "Retro Ink Stipple Portrait",
     category: "Posters & Art",
     year: "2025",
@@ -581,7 +599,7 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     id: "landscape-cabin-grading",
-    num: "53",
+    num: "54",
     title: "Alpine Cabin — Before/After Recolor",
     category: "Posters & Art",
     year: "2025",
@@ -643,9 +661,140 @@ const SOFTWARES = [
   },
 ];
 
+
+interface PortfolioCardProps {
+  project: ProjectItem;
+  index: number;
+  onOpen: (index: number, initialPage?: number) => void;
+}
+
+function PortfolioCard({ project, index, onOpen }: PortfolioCardProps) {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const hasPages = Boolean(project.pages && project.pages.length > 1);
+  const totalSlides = hasPages ? project.pages!.length : 1;
+  const currentImg = hasPages ? project.pages![activeSlide] : project.img;
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveSlide((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveSlide((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
+  };
+
+  return (
+    <div
+      className="portfolio-card reveal-card clickable-card group flex flex-col justify-between"
+      onClick={() => onOpen(index, activeSlide)}
+    >
+      {/* Image Container with Proper Aspect Ratio */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#161616] flex items-center justify-center p-3 select-none">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={currentImg}
+          alt={`${project.title} - Slide ${activeSlide + 1}`}
+          className="card-img max-h-full max-w-full object-contain rounded transition-all duration-300"
+          loading="lazy"
+        />
+
+        {/* Carousel Badges & Controls */}
+        {hasPages ? (
+          <>
+            {/* Top-Right Badge: Multi-Slide Pill */}
+            <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-[#c9a84c]/60 text-[10px] font-mono text-[#c9a84c] flex items-center gap-1.5 shadow-lg z-10">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+              <span>Carousel · {activeSlide + 1}/{totalSlides}</span>
+            </div>
+
+            {/* Left / Right Quick Slide Buttons on Card */}
+            <button
+              onClick={handlePrev}
+              aria-label="Previous slide"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/75 hover:bg-[#c9a84c] text-white hover:text-black border border-white/20 hover:border-[#c9a84c] flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-all z-20 cursor-pointer shadow-md"
+            >
+              ◀
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Next slide"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/75 hover:bg-[#c9a84c] text-white hover:text-black border border-white/20 hover:border-[#c9a84c] flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-all z-20 cursor-pointer shadow-md"
+            >
+              ▶
+            </button>
+
+            {/* Slide Dots at bottom center */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-sm border border-white/10 z-10">
+              {project.pages!.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveSlide(i);
+                  }}
+                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                    activeSlide === i ? "w-4 bg-[#c9a84c]" : "w-1.5 bg-white/30 hover:bg-white/60"
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#c9a84c]/50 text-[10px] font-mono text-[#c9a84c] opacity-0 group-hover:opacity-100 transition-opacity">
+            View Full ↗
+          </div>
+        )}
+
+        {/* Number Watermark */}
+        <div className="absolute bottom-2 left-3 text-[10px] font-mono text-white/40">
+          #{project.num}
+        </div>
+      </div>
+
+      {/* Card Meta & Details */}
+      <div className="p-5 flex flex-col justify-between flex-1 border-t border-white/5 bg-[#101010]">
+        <div>
+          <div className="flex items-center justify-between text-[11px] font-mono text-[#c9a84c] mb-1.5 uppercase">
+            <span>{project.category}</span>
+            <span className="text-white/40">{project.year}</span>
+          </div>
+          <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-[#c9a84c] transition-colors">
+            {project.title}
+          </h3>
+          <p className="text-xs text-white/55 mt-2 line-clamp-2 leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Tags */}
+        {project.tags && (
+          <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-white/5">
+            {project.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-white/60 border border-white/5"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
+  const [activeLightboxInitialPage, setActiveLightboxInitialPage] = useState<number>(0);
+
+  const handleOpenLightbox = (index: number, initialPage: number = 0) => {
+    setActiveLightboxInitialPage(initialPage);
+    setActiveLightboxIndex(index);
+  };
   const portraitRef = useRef<HTMLDivElement>(null);
 
   // High-performance RAF scroll parallax: 0 React re-renders, 120 FPS
@@ -821,7 +970,7 @@ export default function Home() {
       {/* Lightbox Modal with Multi-Page Reader */}
       <LightboxModal
         isOpen={activeLightboxIndex !== null}
-        project={currentProject}
+        project={currentProject ? { ...currentProject, initialPage: activeLightboxInitialPage } : null}
         onClose={() => setActiveLightboxIndex(null)}
         onNext={handleNextLightbox}
         onPrev={handlePrevLightbox}
@@ -991,65 +1140,12 @@ export default function Home() {
         {/* 3-Column Centered Cards Grid (Mockup V2 Aesthetic) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project, index) => (
-            <div
+            <PortfolioCard
               key={project.id}
-              className="portfolio-card reveal-card clickable-card group flex flex-col justify-between"
-              onClick={() => setActiveLightboxIndex(index)}
-            >
-
-              {/* Image Container with Proper Aspect Ratio */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#161616] flex items-center justify-center p-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="card-img max-h-full max-w-full object-contain rounded"
-                  loading="lazy"
-                />
-
-                {/* Floating View Badge */}
-                <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#c9a84c]/50 text-[10px] font-mono text-[#c9a84c] opacity-0 group-hover:opacity-100 transition-opacity">
-                  {project.pages && project.pages.length > 1
-                    ? `Read ${project.pages.length} Pages 📖`
-                    : "View Full ↗"}
-                </div>
-
-                {/* Number Watermark */}
-                <div className="absolute bottom-2 left-3 text-[10px] font-mono text-white/40">
-                  #{project.num}
-                </div>
-              </div>
-
-              {/* Card Meta & Details */}
-              <div className="p-5 flex flex-col justify-between flex-1 border-t border-white/5 bg-[#101010]">
-                <div>
-                  <div className="flex items-center justify-between text-[11px] font-mono text-[#c9a84c] mb-1.5 uppercase">
-                    <span>{project.category}</span>
-                    <span className="text-white/40">{project.year}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-[#c9a84c] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-white/55 mt-2 line-clamp-2 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Tags */}
-                {project.tags && (
-                  <div className="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-white/5">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[9px] px-2 py-0.5 rounded-full bg-white/5 text-white/60 border border-white/5"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
+              project={project}
+              index={index}
+              onOpen={handleOpenLightbox}
+            />
           ))}
         </div>
       </section>
@@ -1184,7 +1280,7 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-6 sm:gap-10 mt-10 pt-8 border-t border-white/10 text-center w-full max-w-lg">
             <div>
               <div className="stat-ring inline-block">
-                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">53+</div>
+                <div className="stat-counter text-2xl sm:text-4xl font-black text-[#c9a84c]">54+</div>
               </div>
               <div className="text-[10px] sm:text-[11px] text-white/50 uppercase tracking-wider font-mono mt-1">Portfolio Works</div>
             </div>
